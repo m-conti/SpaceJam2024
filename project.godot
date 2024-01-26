@@ -5,7 +5,6 @@
 ; Format:
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
-; test
 
 config_version=5
 
