@@ -524,6 +524,9 @@ position = Vector2(1675, 725)
 
 [node name="Human" parent="." instance=ExtResource("5_i8h8m")]
 position = Vector2(2680, 935)
+_humanType = 4
+runSpeed = 10000.0
+stamina = 10.0
 
 [node name="Spawner" type="Timer" parent="."]
 autostart = true

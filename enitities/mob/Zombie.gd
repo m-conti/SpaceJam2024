@@ -9,15 +9,18 @@ func _ready():
 	(%AttackArea).body_entered.connect(attack)
 
 
-func toggleRun(value: bool):
-	super.toggleRun(value)
+func toggleRun(value: bool) -> bool:
+	if not super.toggleRun(value): return false
 	set_collision_layer_value(5, value)
+	return true
 
 
 func _process(delta):
 	super._process(delta)
 	if target == null:
 		target = player
+	if target != player:
+		toggleRun(true)
 
 func seeSomething(body):
 	if target == null or target == player:
