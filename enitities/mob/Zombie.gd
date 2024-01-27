@@ -18,9 +18,7 @@ func toggleRun(value: bool) -> bool:
 
 func _process(delta):
 	super._process(delta)
-	if target == null:
-		target = player
-	if target != player:
+	if target != null and target != player:
 		targetMode = ETargetMode.ATTACK
 		toggleRun(true)
 
@@ -32,5 +30,4 @@ func seeSomething(body):
 
 
 func attack(body):
-	print("attack", body)
 	body.attacked.emit()
