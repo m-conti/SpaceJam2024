@@ -89,14 +89,15 @@ func changeTargetModByHumanType():
 func die():
 	self.queue_free()
 
+	Game.player.score += score
+
+	if Game.zombieNumber >= Game.maxZombie: return
 	var zombie: Node2D = zombie_scene.instantiate()
 	get_parent().add_child(zombie)
 
 	zombie.position = position
 	zombie.global_scale = global_scale
-
-	Game.player.score += score
-
+	Game.zombie_count_changed.emit(Game.zombieNumber)
 
 func _on_attacked():
 	self.die()

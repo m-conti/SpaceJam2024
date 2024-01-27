@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://da3uspmrjxjl"]
+[gd_scene load_steps=17 format=3 uid="uid://da3uspmrjxjl"]
 
 [ext_resource type="Script" path="res://entities/character/Character.gd" id="1_oef5v"]
 [ext_resource type="Texture2D" uid="uid://c1xwku6l1dced" path="res://assets/sprites/Zombie3.png" id="2_gk2cc"]
-[ext_resource type="PackedScene" uid="uid://bgc60lpkb8g1b" path="res://UI/gui.tscn" id="3_yoew8"]
+[ext_resource type="Script" path="res://UI/score.gd" id="3_jbani"]
+[ext_resource type="Script" path="res://UI/zombie.gd" id="4_lr0uq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igy0t"]
 
@@ -73,6 +74,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_45ndk"]
 radius = 30.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_4wy8b"]
+font_size = 30
+
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_oef5v")
@@ -95,4 +99,38 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_45ndk")
 debug_color = Color(0.941176, 0.207843, 0.317647, 0.419608)
 
-[node name="GUI" parent="." instance=ExtResource("3_yoew8")]
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 50.0
+offset_right = -54.0
+offset_bottom = 112.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="GUI/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score : 0"
+label_settings = SubResource("LabelSettings_4wy8b")
+script = ExtResource("3_jbani")
+
+[node name="Zombies" type="Label" parent="GUI/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score : 0"
+label_settings = SubResource("LabelSettings_4wy8b")
+script = ExtResource("4_lr0uq")
+
+[connection signal="score_changed" from="." to="GUI/PanelContainer/MarginContainer/VBoxContainer/Score" method="_on_character_score_changed"]

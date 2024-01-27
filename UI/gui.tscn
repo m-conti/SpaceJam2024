@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgc60lpkb8g1b"]
+[gd_scene load_steps=4 format=3 uid="uid://bgc60lpkb8g1b"]
 
-[ext_resource type="Script" path="res://scripts/score.gd" id="1_pjyqw"]
+[ext_resource type="Script" path="res://UI/score.gd" id="1_obs3n"]
+[ext_resource type="Script" path="res://UI/zombie.gd" id="2_nao3k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4wy8b"]
 font_size = 30
@@ -24,8 +25,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Score" type="Label" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Score : 0"
 label_settings = SubResource("LabelSettings_4wy8b")
-script = ExtResource("1_pjyqw")
+script = ExtResource("1_obs3n")
+
+[node name="Zombies" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score : 0"
+label_settings = SubResource("LabelSettings_4wy8b")
+script = ExtResource("2_nao3k")
