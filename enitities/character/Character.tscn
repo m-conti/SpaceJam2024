@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://da3uspmrjxjl"]
+
+[ext_resource type="Script" path="res://enitities/character/Character.gd" id="1_oef5v"]
+[ext_resource type="Texture2D" uid="uid://c1xwku6l1dced" path="res://assets/sprites/Zombie3.png" id="2_gk2cc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igy0t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5b7n"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw4r1"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r783j"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6jh0"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x8cb"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dob2w"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl3sk"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsql7"]
+atlas = ExtResource("2_gk2cc")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7753s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5b7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw4r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r783j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6jh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x8cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dob2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl3sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsql7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Character" type="CharacterBody2D"]
+collision_layer = 5
+script = ExtResource("1_oef5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_igy0t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_7753s")

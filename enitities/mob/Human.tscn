@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://dioyvpfc1cdvf"]
+
+[ext_resource type="Script" path="res://enitities/mob/Human.gd" id="1_5qxiv"]
+[ext_resource type="Texture2D" uid="uid://b3vku5cepq6ra" path="res://assets/sprites/Zombie2.png" id="2_ngqlf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xe1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7owp6"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df0l4"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kljve"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvqpb"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2e56"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pnl4"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bbri"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xxdr"]
+atlas = ExtResource("2_ngqlf")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ssomn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7owp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df0l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kljve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvqpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2e56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pnl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bbri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xxdr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix4jg"]
+radius = 120.0
+
+[node name="Human" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 7
+script = ExtResource("1_5qxiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2xe1j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ssomn")
+
+[node name="Vision" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision"]
+polygon = PackedVector2Array(100, 100, -100, 100, 0, 0)
+
+[node name="Hearing" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hearing"]
+shape = SubResource("CircleShape2D_ix4jg")
+debug_color = Color(0.717647, 0.25098, 1, 0.419608)

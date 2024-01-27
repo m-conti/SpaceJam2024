@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://gi0mjpjmku2f"]
+[gd_scene load_steps=3 format=3 uid="uid://gi0mjpjmku2f"]
 
 [ext_resource type="Script" path="res://scripts/api/authentication.gd" id="1_cimbo"]
 [ext_resource type="PackedScene" uid="uid://da3uspmrjxjl" path="res://enitities/character/Character.tscn" id="2_wyg1e"]
-[ext_resource type="PackedScene" uid="uid://dioyvpfc1cdvf" path="res://enitities/mob/Human.tscn" id="3_o67sh"]
 
 [node name="Test" type="Node2D"]
 
@@ -11,6 +10,3 @@ script = ExtResource("1_cimbo")
 
 [node name="Character" parent="." instance=ExtResource("2_wyg1e")]
 position = Vector2(335, 145)
-
-[node name="Human" parent="." instance=ExtResource("3_o67sh")]
-position = Vector2(536, 187)
