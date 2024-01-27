@@ -12,29 +12,28 @@ enum EHumanType {
 signal attacked
 
 @export var _humanType: EHumanType = EHumanType.NEUTRAL
+@export var zombie_scene: PackedScene
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	(%Vision as Area2D).body_entered.connect(seeSomething)
 	(%Hearing as Area2D).body_entered.connect(hearSomathing)
 	attacked.connect(_on_attacked)
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _physics_process(delta):
 	super._physics_process(delta)
 	if target:
 		changeLookAtByHumanType()
 
+
 func seeSomething(body: CharacterBody2D):
 	setTarget(body)
 
+
 func hearSomathing(body: CharacterBody2D):
 	setTarget(body)
+
 
 func setTarget(body: CharacterBody2D):
 	print("SET TARGET :", body, target)
@@ -44,6 +43,7 @@ func setTarget(body: CharacterBody2D):
 		target = body
 	if target == body:
 		changeTargetModByHumanType()
+
 
 func changeLookAtByHumanType():
 	if _humanType == EHumanType.FEARLESS:
@@ -59,6 +59,7 @@ func changeLookAtByHumanType():
 		(%Vision).look_at(target.position)
 		(%Vision as Area2D).rotate(PI)
 
+
 func changeTargetModByHumanType():
 	if _humanType == EHumanType.FEARLESS:
 		targetMode = ETargetMode.ATTACK
@@ -72,8 +73,16 @@ func changeTargetModByHumanType():
 		targetMode = ETargetMode.FLY
 	print("CHANGE TARGET_MODE :", targetMode)
 
+
 func die():
 	self.queue_free()
+
+	var zombie: Node2D = zombie_scene.instantiate()
+	get_parent().add_child(zombie)
+	
+	zombie.position = position
+	zombie.global_scale = global_scale
+
 
 func _on_attacked():
 	self.die()
