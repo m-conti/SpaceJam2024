@@ -80,7 +80,7 @@ script = ExtResource("1_5qxiv")
 _humanType = 1
 zombie_scene = ExtResource("2_botgb")
 runSpeed = 12000.0
-stamina = 6.0
+min_stamina = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xe1j")
@@ -104,11 +104,18 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_ix4jg")
 debug_color = Color(0.717647, 0.25098, 1, 0.0588235)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="StaminaProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = -11.0
 offset_top = -14.0
 offset_right = 11.0
 offset_bottom = -10.0
+show_percentage = false
+
+[node name="LifeProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -10.9
+offset_top = -18.9
+offset_right = 11.1
+offset_bottom = -14.9
 show_percentage = false

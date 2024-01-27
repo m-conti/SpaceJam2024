@@ -2,10 +2,6 @@ class_name Player
 extends Entity
 
 
-@export var walkSpeed: float = 6000.0
-@export var runSpeed: float = 16000.0
-@export var stamina: float = 10.0
-var isRunning: bool = false
 @export var attack_speed: float = 0.5:
 	set(value): attackTimer.wait_time = 1 / value
 
@@ -21,9 +17,6 @@ var score: int = 0:
 @onready var attackTimer: Timer = Timer.new()
 
 var last_chunck
-
-var speed: float:
-	get: return runSpeed if isRunning else walkSpeed
 
 signal score_changed(value: int)
 signal spawn_zombie(zombie: Zombie)
