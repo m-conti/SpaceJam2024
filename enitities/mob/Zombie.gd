@@ -5,6 +5,7 @@ class_name Zombie
 
 
 func _ready():
+	super._ready()
 	(%Vision as Area2D).body_entered.connect(seeSomething)
 	(%AttackArea).body_entered.connect(attack)
 
@@ -17,9 +18,8 @@ func toggleRun(value: bool) -> bool:
 
 func _process(delta):
 	super._process(delta)
-	if target == null:
-		target = player
 	if target != player:
+		targetMode = ETargetMode.ATTACK
 		toggleRun(true)
 
 func seeSomething(body):
