@@ -1,8 +1,6 @@
 extends TileMap
 class_name Map
 
-@export var scroll_container: ScrollContainer
-
 const RIGID_LAYER = 0
 const TERRAIN_LAYER = 1
 
@@ -23,17 +21,10 @@ func _input(event) -> void:
 			mouse_map_pos_changed.emit(last_mouse_map_pos, current_mouse_map_pos)
 			last_mouse_map_pos = current_mouse_map_pos
 	
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var current_mouse_map_pos: Vector2i = mouse_map_pos()
 
-		if not is_in_grid(current_mouse_map_pos):
-			return
 		mouse_map_pos_clicked.emit(current_mouse_map_pos)
-		
-
-
-func _ready() -> void:
-	%MapMask.custom_minimum_size = Vector2(tile_set.tile_size * (size + Vector2i(2, 2))) * scale
 
 
 func mouse_map_pos() -> Vector2i:
@@ -44,17 +35,12 @@ func mouse_map_pos() -> Vector2i:
 
 func is_space_empty(pos: Vector2i, pattern_poses: Array) -> bool:
 	for pattern_pos in pattern_poses:
-		if not is_in_grid(pos + pattern_pos):
-			return false
 		if get_cell(pos + pattern_pos) != null:
 			return false
 	return true
 
 
 func can_move(pos: Vector2i) -> bool:
-	if not is_in_grid(pos):
-		return false
-
 	var cell = get_cell(pos)
 
 	if cell is Vector4i:
@@ -90,7 +76,3 @@ func place_pattern(layer: int, pos: Vector2i, house: TileMapPattern) -> void:
 
 func get_cell(pos: Vector2i):
 	return cells.get(pos)
-
-
-func is_in_grid(pos: Vector2i) -> bool:
-	return pos.x >= 0 and pos.x < size.x and pos.y >= 0 and pos.y < size.y

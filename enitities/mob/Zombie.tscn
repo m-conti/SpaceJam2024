@@ -70,6 +70,7 @@ animations = [{
 }]
 
 [node name="Zombie" type="CharacterBody2D"]
+scale = Vector2(20, 20)
 collision_layer = 5
 script = ExtResource("1_lq8tr")
 
