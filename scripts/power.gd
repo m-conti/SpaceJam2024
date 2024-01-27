@@ -2,6 +2,14 @@ class_name Power
 extends Node
 
 
+static var description: String:
+    get: return get_description()
+
+
+static func get_description() -> String:
+    return ""
+
+
 func _activate_on_zombie(_zombie: Zombie):
     pass
 
