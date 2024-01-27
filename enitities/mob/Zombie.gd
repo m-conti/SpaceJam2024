@@ -18,6 +18,8 @@ func toggleRun(value: bool) -> bool:
 
 func _process(delta):
 	super._process(delta)
+	if target == null:
+		target = player
 	if target != player:
 		targetMode = ETargetMode.ATTACK
 		toggleRun(true)
