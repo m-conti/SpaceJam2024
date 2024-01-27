@@ -1,8 +1,8 @@
 class_name PowerStamina
 extends Power
 
-static var max_count: float = 4
-static var current_count: float = 0
+static var max_count: int = 4
+static var current_count: int = 0
 
 @export var stamina_factor: float = 1.5
 

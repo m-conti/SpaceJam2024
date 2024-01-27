@@ -53,7 +53,6 @@ func getPower(n_powers: int) -> Array:
 
 		if powers_file.size() <= 0:
 			return powers
-		
 	
 	return powers
 
