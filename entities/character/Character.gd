@@ -43,6 +43,10 @@ func _input(event):
 		askToAttack()
 
 
+func _on_death():
+	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+
+
 func toggleRun(value: bool):
 	isRunning = value
 	set_collision_layer_value(5, value)

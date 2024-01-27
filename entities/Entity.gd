@@ -10,7 +10,11 @@ extends CharacterBody2D
 		
 		life = value
 		if life <= 0:
-			queue_free()
+			_on_death()
+
+
+func _on_death():
+	queue_free()
 
 
 func _ready(): pass

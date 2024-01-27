@@ -45,6 +45,7 @@ var targetMode: ETargetMode = ETargetMode.WANDER:
 var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
 
+
 func toggleRun(value: bool) -> bool:
 	if value and currentStamina < min_stamina:
 		return false
