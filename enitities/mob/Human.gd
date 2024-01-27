@@ -30,7 +30,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	if target:
+	if target or targetMode == ETargetMode.WANDER:
 		changeLookAtByHumanType()
 
 

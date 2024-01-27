@@ -19,7 +19,7 @@ var isRunning: bool = false
 
 var wander_direction := Vector2.ZERO
 var target_pos: Vector2:
-	get: return (position + wander_direction*10.0) if targetMode == ETargetMode.WANDER else target.position
+	get: return (global_position + wander_direction*10.0) if targetMode == ETargetMode.WANDER else target.position
 
 var target: CharacterBody2D:
 	set(value):
@@ -98,4 +98,4 @@ func getDirectionByTargetMode():
 	elif targetMode == ETargetMode.ATTACK:
 		return target_pos - position
 	elif targetMode == ETargetMode.WANDER:
-		return wander_direction
+		return -wander_direction
