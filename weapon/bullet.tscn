@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7f46hkum483g"]
+
+[ext_resource type="Script" path="res://weapon/bullet.gd" id="1_ckc3s"]
+
+[sub_resource type="Gradient" id="Gradient_ihegj"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m5oct"]
+gradient = SubResource("Gradient_ihegj")
+width = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf5xc"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_ckc3s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(5, 5)
+texture = SubResource("GradientTexture1D_m5oct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rf5xc")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

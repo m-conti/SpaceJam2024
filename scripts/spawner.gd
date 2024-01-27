@@ -9,7 +9,7 @@ extends Timer
 
 @export var spawn_range := Vector2i(5, 5)
 
-@onready var map: Map = get_parent()
+@onready var map: Map = %Map
 
 
 func _on_timeout() -> void:
