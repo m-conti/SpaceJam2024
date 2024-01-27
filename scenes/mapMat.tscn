@@ -531,6 +531,5 @@ stamina = 10.0
 [node name="Spawner" type="Timer" parent="."]
 autostart = true
 script = ExtResource("6_8hfds")
-entity_to_spawn = ExtResource("5_i8h8m")
 
 [connection signal="timeout" from="Spawner" to="Spawner" method="_on_timeout"]
