@@ -10,9 +10,12 @@ static var current_count: float = 0
 static func get_description() -> String:
 	return "Transforms 10% of your zombies (and future zombies) into super zombies. Super zombies are faster and bigger."
 
+static func get_display_name() -> String:
+	return "Super Zombies"
+
 func _activate():
-    PowerSuper.current_count += 1
-    super._activate()
+	PowerSuper.current_count += 1
+	super._activate()
 
 
 func _activate_on_zombie(zombie: Zombie):

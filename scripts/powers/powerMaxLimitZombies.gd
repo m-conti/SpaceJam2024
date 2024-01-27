@@ -10,7 +10,9 @@ static var current_count: float = 0
 static func get_description() -> String:
 	return "Increases the maximum number of zombies you can have by 1."
 
+static func get_display_name() -> String:
+	return "Max Limit Zombies"
 
 func _activate():
-    PowerMaxLimitZombies.current_count += 1
-    Game.maxZombie += augment_limit
+	PowerMaxLimitZombies.current_count += 1
+	Game.maxZombie += augment_limit

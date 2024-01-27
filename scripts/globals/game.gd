@@ -1,5 +1,6 @@
 extends Node
 
+var lvlUpScene: PackedScene = preload("res://UI/powerSelection/PowerSelection.tscn")
 
 var player: Player
 var map: Map
@@ -25,9 +26,7 @@ func addXp(value: float):
 	current_xp += value
 	if current_xp >= xp_needed:
 		current_xp = 0
-		lvl += 1
-		xp_needed = get_xp_needed_by_lvl()
-		lvl_changed.emit()
+		_on_level_up()
 	xp_changed.emit()
 
 func get_xp_needed_by_lvl() -> float:
@@ -57,3 +56,11 @@ func getPower(n_powers: int) -> Array:
 		
 	
 	return powers
+
+func _on_level_up():
+	lvl += 1
+	xp_needed = get_xp_needed_by_lvl()
+	lvl_changed.emit()
+	get_tree().paused = true
+	var scene = lvlUpScene.instantiate()
+	get_tree().root.add_child(scene)

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://ykh2uffxni0c"]
+[gd_scene load_steps=2 format=3 uid="uid://ykh2uffxni0c"]
+
+[ext_resource type="Script" path="res://UI/powerSelection/powerSelection.gd" id="1_g4pc0"]
 
 [node name="PowerSelection" type="CanvasLayer"]
+script = ExtResource("1_g4pc0")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

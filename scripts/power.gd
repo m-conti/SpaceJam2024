@@ -9,6 +9,8 @@ static var description: String:
 static func get_description() -> String:
     return ""
 
+static func get_display_name() -> String:
+    return ""
 
 func _activate_on_zombie(_zombie: Zombie):
     pass
