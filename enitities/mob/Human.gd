@@ -13,6 +13,7 @@ signal attacked
 
 @export var _humanType: EHumanType = EHumanType.NEUTRAL
 @export var zombie_scene: PackedScene
+@export var score: int = 1
 
 
 func _ready():
@@ -82,9 +83,11 @@ func die():
 
 	var zombie: Node2D = zombie_scene.instantiate()
 	get_parent().add_child(zombie)
-	
+
 	zombie.position = position
 	zombie.global_scale = global_scale
+
+	Game.player.score += score
 
 
 func _on_attacked():

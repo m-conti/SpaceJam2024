@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -8,17 +9,30 @@ var isRunning: bool = false
 @export var attack_speed: float = 0.5:
 	set(value): attackTimer.wait_time = 1 / value
 
+var score: int = 0:
+	set(value):
+		value = 0 if value < 0 else value
+
+		if score == value: return
+
+		score = value
+		score_changed.emit(value)
+
 @onready var attackTimer: Timer = Timer.new()
 
 var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
 
-# Called when the node enters the scene tree for the first time.
+
+signal score_changed(value: int)
+
+
 func _ready():
+	Game.player = self
 	self.add_child(attackTimer)
 	attackTimer.wait_time = 1 / attack_speed
 	attackTimer.one_shot = true
-	pass # Replace with function body.
+
 
 func _input(event):
 	if event.is_action_pressed("run"):
@@ -28,9 +42,6 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 		askToAttack()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func toggleRun(value: bool):
 	isRunning = value
