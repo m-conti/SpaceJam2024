@@ -7,7 +7,13 @@ static var current_count: float = 0
 
 
 func _activate():
-	PowerLife.max_count -= 1
-	for zombie in get_tree().get_nodes_in_group("zombie"):
-		zombie.max_life += life
+	PowerLife.current_count += 1
+	super._activate()
+
+static func get_description() -> String:
+    return "Increases the life of your zombies by 1."
+
+
+func _activate_on_zombie(zombie: Zombie):
+    zombie.max_life += life
 

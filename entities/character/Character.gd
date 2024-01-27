@@ -26,6 +26,7 @@ var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
 
 signal score_changed(value: int)
+signal spawn_zombie(zombie: Zombie)
 
 
 func _ready():

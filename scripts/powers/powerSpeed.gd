@@ -8,7 +8,13 @@ static var current_count: float = 0
 
 
 func _activate():
-	PowerLife.max_count -= 1
-	for zombie: Zombie in get_tree().get_nodes_in_group("zombie"):
-		zombie.walkSpeed *= speed_factor
-		zombie.runSpeed *= speed_factor
+	PowerSpeed.current_count += 1
+	super._activate()
+
+static func get_description() -> String:
+    return "Makes your zombies faster."
+
+
+func _activate_on_zombie(zombie: Zombie):
+    zombie.walkSpeed *= speed_factor
+    zombie.runSpeed *= speed_factor
