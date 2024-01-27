@@ -108,6 +108,7 @@ debug_color = Color(0.988235, 0, 0.294118, 0.419608)
 
 [node name="StaminaProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
+self_modulate = Color(0, 1, 0, 1)
 offset_left = -11.0
 offset_top = -14.0
 offset_right = 11.0
@@ -116,6 +117,7 @@ show_percentage = false
 
 [node name="LifeProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
 offset_left = -10.9
 offset_top = -18.9
 offset_right = 11.1
