@@ -36,7 +36,6 @@ func _physics_process(delta):
 	direction = direction.normalized()
 
 	velocity = direction * speed * delta
-	print("velocity :", velocity)
 	move_and_slide()
 
 func getDirectionByTargetMode():

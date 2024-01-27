@@ -25,6 +25,10 @@ func _ready():
 func _process(delta):
 	pass
 
+func _physics_process(delta):
+	super._physics_process(delta)
+	if target:
+		changeLookAtByHumanType()
 
 func seeSomething(body: CharacterBody2D):
 	setTarget(body)
@@ -40,6 +44,20 @@ func setTarget(body: CharacterBody2D):
 		target = body
 	if target == body:
 		changeTargetModByHumanType()
+
+func changeLookAtByHumanType():
+	if _humanType == EHumanType.FEARLESS:
+		(%Vision).look_at(target.position)
+	elif _humanType == EHumanType.FEARFUL:
+		(%Vision).look_at(target.position)
+		(%Vision as Area2D).rotate(PI)
+	elif _humanType == EHumanType.AGGRESSIVE:
+		(%Vision).look_at(target.position)
+	elif _humanType == EHumanType.DEFENSIVE:
+		(%Vision).look_at(target.position)
+	elif _humanType == EHumanType.NEUTRAL:
+		(%Vision).look_at(target.position)
+		(%Vision as Area2D).rotate(PI)
 
 func changeTargetModByHumanType():
 	if _humanType == EHumanType.FEARLESS:
