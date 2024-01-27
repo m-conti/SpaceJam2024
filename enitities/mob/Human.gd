@@ -25,6 +25,7 @@ func _ready():
 
 func _process(delta):
 	super._process(delta)
+	toggleRunByHumanType()
 
 
 func _physics_process(delta):
@@ -64,6 +65,13 @@ func changeLookAtByHumanType():
 		(%Vision).look_at(target_pos)
 		(%Vision as Area2D).rotate(PI)
 
+func toggleRunByHumanType():
+	if _humanType == EHumanType.FEARFUL:
+		if target:
+			toggleRun(true)
+	elif _humanType == EHumanType.AGGRESSIVE:
+		if target:
+			toggleRun(true)
 
 func changeTargetModByHumanType():
 	if _humanType == EHumanType.FEARLESS:

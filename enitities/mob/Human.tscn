@@ -77,7 +77,10 @@ radius = 120.0
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_5qxiv")
+_humanType = 1
 zombie_scene = ExtResource("2_botgb")
+runSpeed = 12000.0
+stamina = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xe1j")
