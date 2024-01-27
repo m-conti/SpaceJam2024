@@ -7,6 +7,7 @@ const TERRAIN_LAYER = 1
 var last_mouse_map_pos = null
 var cells := {}
 var chunck_generated := Set.new()
+var thread: Thread
 
 @export var size := Vector2i(100, 100)
 
@@ -14,6 +15,10 @@ var chunck_generated := Set.new()
 
 signal mouse_map_pos_changed(last_pos, new_pos: Vector2i)
 signal mouse_map_pos_clicked(pos: Vector2i)
+
+
+func _exit_tree():
+	thread.wait_to_finish()
 
 
 func _ready():
@@ -85,5 +90,11 @@ func get_cell(pos: Vector2i):
 	return cells.get(pos)
 
 
-func generate_chunck(chunck: Vector2i):
-	background_generator.generate_chunck(chunck)
+func generate_chunck_around(chunck: Vector2i):
+	thread = Thread.new()
+
+	thread.start(func():
+		for x in range(chunck.x - 2, chunck.x + 2):
+			for y in range(chunck.y - 2, chunck.y + 2):
+				background_generator.generate_chunck(Vector2i(x, y))
+	)

@@ -64,9 +64,7 @@ func generate_chuncks():
 	if chunck == last_chunck: return
 	last_chunck = chunck
 
-	for x in range(chunck.x - 2, chunck.x + 2):
-		for y in range(chunck.y - 2, chunck.y + 2):
-			map.generate_chunck(Vector2i(x, y))
+	map.generate_chunck_around(chunck)
 
 
 func _physics_process(delta):
