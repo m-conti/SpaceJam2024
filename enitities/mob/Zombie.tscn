@@ -79,6 +79,7 @@ radius = 40.0
 scale = Vector2(20, 20)
 collision_layer = 5
 script = ExtResource("1_lq8tr")
+walkSpeed = 4000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xe1j")
@@ -90,6 +91,7 @@ sprite_frames = SubResource("SpriteFrames_0672c")
 frame_progress = 0.549635
 
 [node name="Vision" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
@@ -97,7 +99,7 @@ shape = SubResource("CircleShape2D_tmj5k")
 debug_color = Color(0.643137, 0.521569, 0, 0.419608)
 
 [node name="AttackArea" type="Area2D" parent="."]
-scale = Vector2(1, 1)
+unique_name_in_owner = true
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]

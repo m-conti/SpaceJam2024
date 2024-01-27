@@ -10,6 +10,7 @@ enum ETargetMode {
 @export var walkSpeed: float = 6000.0
 @export var runSpeed: float = 10000.0
 @export var stamina: float = 10.0
+@export var staminaRecorvery: float = 1.0
 var isRunning: bool = false
 
 var target: CharacterBody2D
@@ -18,6 +19,10 @@ var targetMode: ETargetMode = ETargetMode.WALK
 
 var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
+
+func toggleRun(value: bool):
+	isRunning = value
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

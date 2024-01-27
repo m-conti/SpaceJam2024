@@ -1,6 +1,7 @@
 extends Mob
 class_name Zombie
 
+@onready var player = get_parent().get_node("%Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,14 +10,19 @@ func _ready():
 	pass # Replace with function body.
 
 
+func toggleRun(value: bool):
+	super.toggleRun(value)
+	set_collision_layer_value(5, value)
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
 	if target == null:
-		target = %Player
+		target = player
 
 func seeSomething(body):
-	if target == null or target == %Player:
+	if target == null or target == player:
 		target = body
 	elif body.position.distance_to(position) < target.position.distance_to(position):
 		target = body
