@@ -8,7 +8,7 @@ static var current_count: float = 0
 
 
 static func get_description() -> String:
-    return "Increases the maximum number of zombies you can have by 1."
+	return "Increases the maximum number of zombies you can have by 1."
 
 
 func _activate():
