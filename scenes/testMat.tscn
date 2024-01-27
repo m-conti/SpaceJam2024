@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://gi0mjpjmku2f"]
+
+[ext_resource type="Script" path="res://scripts/api/authentication.gd" id="1_cimbo"]
+[ext_resource type="Script" path="res://scripts/api/leaderboard.gd" id="2_6lx1q"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Auth" type="Node" parent="."]
+script = ExtResource("1_cimbo")
+
+[node name="LeaderBoard" type="Node" parent="."]
+script = ExtResource("2_6lx1q")
