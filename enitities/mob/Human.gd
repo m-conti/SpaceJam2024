@@ -20,6 +20,9 @@ func _ready():
 	(%Hearing as Area2D).body_entered.connect(hearSomathing)
 	attacked.connect(_on_attacked)
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	super._process(delta)
 
 func _physics_process(delta):
 	super._physics_process(delta)

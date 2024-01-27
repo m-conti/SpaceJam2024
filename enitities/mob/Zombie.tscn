@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://5dsumrvtxacm"]
+[gd_scene load_steps=15 format=3 uid="uid://5dsumrvtxacm"]
 
 [ext_resource type="Script" path="res://enitities/mob/Zombie.gd" id="1_lq8tr"]
 [ext_resource type="Texture2D" uid="uid://dqu15ssnq8vt0" path="res://assets/sprites/Zombie.png" id="2_6kepe"]
@@ -69,6 +69,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmj5k"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eyfc7"]
+radius = 40.0
+
 [node name="Zombie" type="CharacterBody2D"]
 scale = Vector2(20, 20)
 collision_layer = 5
@@ -82,3 +88,18 @@ one_way_collision_margin = 0.0
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_0672c")
 frame_progress = 0.549635
+
+[node name="Vision" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource("CircleShape2D_tmj5k")
+debug_color = Color(0.643137, 0.521569, 0, 0.419608)
+
+[node name="AttackArea" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_eyfc7")
+debug_color = Color(0.988235, 0, 0.294118, 0.419608)
