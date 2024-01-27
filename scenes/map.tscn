@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rulg1r7sntw4"]
+[gd_scene load_steps=15 format=3 uid="uid://rulg1r7sntw4"]
 
 [ext_resource type="Script" path="res://scripts/map/map.gd" id="1_7xh8i"]
 [ext_resource type="Texture2D" uid="uid://br1inv15xttr3" path="res://tileset.jpeg" id="1_f71fl"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_h4lx8"]
 [ext_resource type="PackedScene" uid="uid://dioyvpfc1cdvf" path="res://enitities/mob/Human.tscn" id="6_j5ko8"]
 [ext_resource type="PackedScene" uid="uid://da3uspmrjxjl" path="res://enitities/character/Character.tscn" id="6_vbuwl"]
-[ext_resource type="Script" path="res://scripts/score.gd" id="7_s6tty"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_mjqsk"]
 tile_data = PackedInt32Array(0, 65536, 2, 1, 65536, 2)
@@ -503,9 +502,6 @@ pattern_3 = SubResource("TileMapPattern_c7brr")
 pattern_4 = SubResource("TileMapPattern_504sf")
 pattern_5 = SubResource("TileMapPattern_0xhhd")
 
-[sub_resource type="LabelSettings" id="LabelSettings_4wy8b"]
-font_size = 30
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Map" type="TileMap" parent="."]
@@ -532,30 +528,4 @@ unique_name_in_owner = true
 position = Vector2(10, 10)
 scale = Vector2(2, 2)
 
-[node name="GUI" type="CanvasLayer" parent="Player"]
-
-[node name="PanelContainer" type="PanelContainer" parent="Player/GUI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -212.0
-offset_top = 50.0
-offset_right = -54.0
-offset_bottom = 112.0
-grow_horizontal = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="Player/GUI/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Score" type="Label" parent="Player/GUI/PanelContainer/MarginContainer"]
-layout_mode = 2
-text = "Score : 0"
-label_settings = SubResource("LabelSettings_4wy8b")
-script = ExtResource("7_s6tty")
-
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]
-[connection signal="score_changed" from="Player" to="Player/GUI/PanelContainer/MarginContainer/Score" method="_on_score_changed"]
