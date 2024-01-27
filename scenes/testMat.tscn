@@ -14,6 +14,3 @@ position = Vector2(335, 145)
 
 [node name="Human" parent="." instance=ExtResource("3_o67sh")]
 position = Vector2(536, 187)
-walkSpeed = 6000.0
-runSpeed = 10000.0
-stamina = 10.0

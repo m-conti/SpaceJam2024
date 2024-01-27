@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da3uspmrjxjl"]
+[gd_scene load_steps=14 format=3 uid="uid://da3uspmrjxjl"]
 
 [ext_resource type="Script" path="res://enitities/character/Character.gd" id="1_oef5v"]
 [ext_resource type="Texture2D" uid="uid://c1xwku6l1dced" path="res://assets/sprites/Zombie3.png" id="2_gk2cc"]
@@ -69,6 +69,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_45ndk"]
+radius = 30.0
+
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_oef5v")
@@ -82,3 +85,11 @@ sprite_frames = SubResource("SpriteFrames_7753s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_45ndk")
+debug_color = Color(0.941176, 0.207843, 0.317647, 0.419608)
