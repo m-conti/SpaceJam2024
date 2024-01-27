@@ -99,6 +99,8 @@ func die():
 
 	zombie.position = position
 	zombie.global_scale = global_scale
+	
+	Game.player.spawn_zombie.emit(zombie)
 	Game.zombie_count_changed.emit(Game.zombieNumber)
 
 func _on_attacked():

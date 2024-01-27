@@ -132,19 +132,19 @@ script = ExtResource("3_jbani")
 
 [node name="Zombies" type="Label" parent="GUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Score : 0"
+text = "Zombies : 0"
 label_settings = SubResource("LabelSettings_4wy8b")
 script = ExtResource("4_lr0uq")
 
 [node name="Xp" type="Label" parent="GUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Score : 0"
+text = "xp : 0 / 100"
 label_settings = SubResource("LabelSettings_4wy8b")
 script = ExtResource("5_j1jo7")
 
 [node name="Lvl" type="Label" parent="GUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Score : 0"
+text = "lvl : 0"
 label_settings = SubResource("LabelSettings_4wy8b")
 script = ExtResource("6_of7a4")
 
