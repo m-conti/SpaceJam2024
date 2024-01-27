@@ -36,14 +36,24 @@ func get_xp_needed_by_lvl() -> float:
 
 func getPower(n_powers: int) -> Array:
 	var powers_file := Array(DirAccess.get_files_at("res://scripts/powers"))
+	if powers_file.size() <= 0:
+		return []
 
 	var powers: Array = []
-	var power_file: String = powers_file.pick_random()
-	var power = load("res://scripts/powers/" + power_file)
 
-	while power not in powers and powers.size() < n_powers and power.current_count < power.max_count:
+	for i in range(n_powers):
+		var power_file: String = powers_file.pick_random()
+		var power = load("res://scripts/powers/" + power_file)
+
+		while power.current_count >= power.max_count:
+			power_file = powers_file.pick_random()
+			power = load("res://scripts/powers/" + power_file)
+		
+		powers_file.erase(power_file)
 		powers.append(power)
-		power_file = powers_file.pick_random()
-		power = load("res://scripts/powers/" + power_file)
+
+		if powers_file.size() <= 0:
+			return powers
+		
 	
 	return powers
