@@ -3,4 +3,4 @@ extends Node
 
 
 func _activate():
-    pass
+	pass
