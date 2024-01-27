@@ -9,12 +9,15 @@ enum EHumanType {
 	NEUTRAL
 }
 
+signal attacked
+
 @export var _humanType: EHumanType = EHumanType.NEUTRAL
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	(%Vision as Area2D).body_entered.connect(seeSomething)
 	(%Hearing as Area2D).body_entered.connect(hearSomathing)
+	attacked.connect(_on_attacked)
 	pass # Replace with function body.
 
 
@@ -50,3 +53,9 @@ func changeTargetModByHumanType():
 	elif _humanType == EHumanType.NEUTRAL:
 		targetMode = ETargetMode.FLY
 	print("CHANGE TARGET_MODE :", targetMode)
+
+func die():
+	self.queue_free()
+
+func _on_attacked():
+	self.die()

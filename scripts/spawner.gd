@@ -43,5 +43,5 @@ func spawn_around(entity: Node2D) -> void:
         spawnable_map_pos = get_spawnable_map_pos_around(spawnable_map_pos, -spawn_range, spawn_range)
 
         var entity_instance = entity_to_spawn.instantiate()
-        entity_instance.position = map.map_to_local(spawnable_map_pos)
-        map.add_child(entity_instance)
+        entity_instance.global_position = map.to_global(map.map_to_local(spawnable_map_pos))
+        map.get_parent().add_child(entity_instance)
