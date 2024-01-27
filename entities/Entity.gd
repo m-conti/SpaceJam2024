@@ -2,7 +2,18 @@ class_name Entity
 extends CharacterBody2D
 
 
-@export var max_life: int = 1
+@onready var progress_bar: ProgressBar = %ProgressBar
+
+
+@export var max_life: int = 1:
+	set(value):
+		if max_life == value: return
+		
+		var diff: int = value - max_life
+		diff = diff if diff > 0 else 0
+
+		max_life = value
+		life += diff 
 
 @onready var life: int = max_life:
 	set(value):
@@ -13,11 +24,18 @@ extends CharacterBody2D
 			_on_death()
 
 
+func _on_life_changed():
+	Anim.animate(progress_bar, "max_value", max_life, 0.5)
+	Anim.animate(progress_bar, "value", life, 0.5)
+
+
 func _on_death():
 	queue_free()
 
 
-func _ready(): pass
+func _ready():
+	progress_bar.max_value = max_life
+	progress_bar.value = life
 
 
 func _physics_process(delta: float): pass

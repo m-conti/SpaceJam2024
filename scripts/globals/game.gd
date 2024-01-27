@@ -20,13 +20,14 @@ signal xp_changed
 signal lvl_changed
 
 const curve_xp_height = 10
-const curve_xp_width = 1
+const curve_xp_width = 0.4
 
 func addXp(value: float):
 	current_xp += value
 	if current_xp >= xp_needed:
 		current_xp = 0
 		lvl += 1
+		xp_needed = get_xp_needed_by_lvl()
 		lvl_changed.emit()
 	xp_changed.emit()
 
