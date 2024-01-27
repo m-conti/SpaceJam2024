@@ -91,7 +91,9 @@ func die():
 
 	Game.player.score += score
 
-	if Game.zombieNumber >= Game.maxZombie: return
+	if Game.zombieNumber >= Game.maxZombie:
+		Game.addXp(2)
+		return
 	var zombie: Node2D = zombie_scene.instantiate()
 	get_parent().add_child(zombie)
 
