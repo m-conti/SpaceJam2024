@@ -31,6 +31,7 @@ func seeSomething(body):
 
 func _on_death():
 	super._on_death()
+	Game.addXp(1)
 	Game.zombie_count_changed.emit(Game.zombieNumber)
 
 func attack(body):
