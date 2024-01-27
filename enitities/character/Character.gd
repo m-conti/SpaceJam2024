@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var walkSpeed: float = 6000.0
 @export var runSpeed: float = 10000.0
+@export var stamina: float = 10.0
 var isRunning: bool = false
 
 var speed: float:
@@ -30,13 +31,13 @@ func toggleRun(value: bool):
 
 func _physics_process(delta):
 	var direction = Vector2()
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		direction.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		direction.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
 	velocity = direction.normalized() * speed * delta
 	move_and_slide()

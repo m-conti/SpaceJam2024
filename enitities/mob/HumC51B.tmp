@@ -73,10 +73,12 @@ animations = [{
 radius = 120.0
 
 [node name="Human" type="CharacterBody2D"]
-scale = Vector2(10, 10)
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_5qxiv")
+walkSpeed = null
+runSpeed = null
+stamina = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xe1j")
@@ -87,7 +89,7 @@ sprite_frames = SubResource("SpriteFrames_ssomn")
 
 [node name="Vision" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_mask = 4
+collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision"]
 polygon = PackedVector2Array(100, 100, -100, 100, 0, 0)
