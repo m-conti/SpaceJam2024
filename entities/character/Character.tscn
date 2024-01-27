@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://da3uspmrjxjl"]
 
-[ext_resource type="Script" path="res://enitities/character/Character.gd" id="1_oef5v"]
+[ext_resource type="Script" path="res://entities/character/Character.gd" id="1_oef5v"]
 [ext_resource type="Texture2D" uid="uid://c1xwku6l1dced" path="res://assets/sprites/Zombie3.png" id="2_gk2cc"]
 [ext_resource type="PackedScene" uid="uid://bgc60lpkb8g1b" path="res://UI/gui.tscn" id="3_yoew8"]
 

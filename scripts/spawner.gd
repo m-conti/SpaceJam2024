@@ -2,7 +2,11 @@ class_name Spawner
 extends Timer
 
 
-@export var entity_to_spawn: PackedScene
+var entity_to_spawn := {
+	preload("res://entities/mob/Human.tscn"): 1.0,
+	preload("res://entities/mob/Hunter.tscn"): 1.0,
+}
+
 @export var spawn_count := Vector2i(1, 10)
 @export var min_spawn_dist: float = 20.0
 @export var max_spawn_dist: float = 50.0
@@ -10,6 +14,20 @@ extends Timer
 @export var spawn_range: float = 10.0
 
 @onready var map: Map = %Map
+
+
+func get_entity_to_spawn() -> PackedScene:
+	var total_weight: float = 0.0
+	for entity in entity_to_spawn:
+		total_weight += entity_to_spawn[entity]
+
+	var random_weight: float = randf_range(0.0, total_weight)
+	for entity in entity_to_spawn:
+		random_weight -= entity_to_spawn[entity]
+		if random_weight <= 0.0:
+			return entity
+	
+	return null
 
 
 func _on_timeout() -> void:
@@ -42,6 +60,6 @@ func spawn_around(entity: Node2D) -> void:
 	for i in range(nb_zombies):
 		spawnable_map_pos = get_spawnable_map_pos_around(spawnable_map_pos, -spawn_range, spawn_range)
 
-		var entity_instance = entity_to_spawn.instantiate()
+		var entity_instance = get_entity_to_spawn().instantiate()
 		entity_instance.global_position = map.to_global(map.map_to_local(spawnable_map_pos))
 		map.get_parent().add_child(entity_instance)

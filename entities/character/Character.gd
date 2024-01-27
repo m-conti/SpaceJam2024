@@ -1,5 +1,5 @@
 class_name Player
-extends CharacterBody2D
+extends Entity
 
 
 @export var walkSpeed: float = 6000.0
@@ -23,11 +23,11 @@ var score: int = 0:
 var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
 
-
 signal score_changed(value: int)
 
 
 func _ready():
+	super._ready()
 	Game.player = self
 	self.add_child(attackTimer)
 	attackTimer.wait_time = 1 / attack_speed
@@ -48,7 +48,9 @@ func toggleRun(value: bool):
 	set_collision_layer_value(5, value)
 	pass
 
+
 func _physics_process(delta):
+	super._physics_process(delta)
 	var direction = Vector2()
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
@@ -61,11 +63,13 @@ func _physics_process(delta):
 	velocity = direction.normalized() * speed * delta
 	move_and_slide()
 
+
 func attack():
 	var bodies = (%AttackArea as Area2D).get_overlapping_bodies()
 	if bodies.size() == 0: return
 	var to_kill = bodies[0]
 	to_kill.attacked.emit()
+
 
 func askToAttack():
 	if attackTimer.is_stopped():

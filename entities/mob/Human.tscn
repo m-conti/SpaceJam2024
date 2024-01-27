@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dioyvpfc1cdvf"]
 
-[ext_resource type="Script" path="res://enitities/mob/Human.gd" id="1_5qxiv"]
-[ext_resource type="PackedScene" uid="uid://5dsumrvtxacm" path="res://enitities/mob/Zombie.tscn" id="2_botgb"]
+[ext_resource type="Script" path="res://entities/mob/Human.gd" id="1_5qxiv"]
+[ext_resource type="PackedScene" uid="uid://5dsumrvtxacm" path="res://entities/mob/Zombie.tscn" id="2_botgb"]
 [ext_resource type="Texture2D" uid="uid://b3vku5cepq6ra" path="res://assets/sprites/Zombie2.png" id="2_ngqlf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xe1j"]
@@ -73,7 +73,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix4jg"]
 radius = 120.0
 
-[node name="Human" type="CharacterBody2D"]
+[node name="Human" type="CharacterBody2D" groups=["human"]]
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_5qxiv")

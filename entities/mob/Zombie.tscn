@@ -1,40 +1,40 @@
 [gd_scene load_steps=15 format=3 uid="uid://5dsumrvtxacm"]
 
-[ext_resource type="Script" path="res://enitities/mob/Zombie.gd" id="1_lq8tr"]
-[ext_resource type="Texture2D" uid="uid://dqu15ssnq8vt0" path="res://assets/sprites/Zombie.png" id="2_6kepe"]
+[ext_resource type="Script" path="res://entities/mob/Zombie.gd" id="1_ir1pe"]
+[ext_resource type="Texture2D" uid="uid://dqu15ssnq8vt0" path="res://assets/sprites/Zombie.png" id="2_6i7fr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xe1j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nmo2"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4jgs"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hirmi"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ug8f"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_su384"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ygnv"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xcha"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1r7x"]
-atlas = ExtResource("2_6kepe")
+atlas = ExtResource("2_6i7fr")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0672c"]
@@ -75,10 +75,10 @@ radius = 120.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_eyfc7"]
 radius = 40.0
 
-[node name="Zombie" type="CharacterBody2D"]
+[node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
 scale = Vector2(20, 20)
 collision_layer = 5
-script = ExtResource("1_lq8tr")
+script = ExtResource("1_ir1pe")
 walkSpeed = 4000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

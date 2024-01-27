@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://br1inv15xttr3" path="res://tileset.jpeg" id="1_5jqqi"]
 [ext_resource type="Script" path="res://scripts/map/map.gd" id="2_0dh70"]
 [ext_resource type="Script" path="res://scripts/map/generation.gd" id="3_mdvfb"]
-[ext_resource type="PackedScene" uid="uid://da3uspmrjxjl" path="res://enitities/character/Character.tscn" id="4_v3wbp"]
-[ext_resource type="PackedScene" uid="uid://dioyvpfc1cdvf" path="res://enitities/mob/Human.tscn" id="5_i8h8m"]
+[ext_resource type="PackedScene" uid="uid://da3uspmrjxjl" path="res://entities/character/Character.tscn" id="4_v3wbp"]
+[ext_resource type="PackedScene" uid="uid://dioyvpfc1cdvf" path="res://entities/mob/Human.tscn" id="5_i8h8m"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="6_8hfds"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_mjqsk"]

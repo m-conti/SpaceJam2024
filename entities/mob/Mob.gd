@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 class_name Mob
 
 enum ETargetMode {
@@ -13,6 +13,8 @@ enum ETargetMode {
 @export var staminaRecorvery: float = 1.0
 @export var min_stamina: float = 4.0
 @export var wander_refresh_time: float = 1.0
+@export var dispawn_distance: float = 1000.0
+
 var isRunning: bool = false
 
 @onready var currentStamina: float = stamina
@@ -65,10 +67,15 @@ func create_wander_timer():
 
 
 func _ready():
+	super._ready()
 	create_wander_timer()
 
 
 func _process(delta):
+	super._process(delta)
+	if (global_position - Game.player.global_position).length_squared() > dispawn_distance**2:
+		queue_free()
+
 	if not is_instance_valid(target):
 		target = null
 	
@@ -81,6 +88,7 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	super._physics_process(delta)
 	if targetMode != ETargetMode.WANDER and target == null:
 		return
 
