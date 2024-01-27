@@ -10,10 +10,6 @@ extends Node2D
 @onready var map: Map = get_parent()
 
 
-func _ready():
-	generate_chunck(Vector2i.ZERO)
-
-
 func create_houses(chunck: Vector2i) -> Array:
 	var entrances: Array = []
 
@@ -36,6 +32,11 @@ func create_houses(chunck: Vector2i) -> Array:
 
 
 func generate_chunck(chunck: Vector2i) -> void:
+	if map.chunck_generated.has(chunck):
+		return
+	
+	map.chunck_generated.add(chunck)
+
 	var entrances: Array = create_houses(chunck)
 
 	var tree: Array = Graph.kruskal(entrances)

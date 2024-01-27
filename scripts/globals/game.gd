@@ -1,4 +1,5 @@
 extends Node
 
 
-@onready var player: Player = %Player
+var player: Player
+var map: Map

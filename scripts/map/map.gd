@@ -6,11 +6,18 @@ const TERRAIN_LAYER = 1
 
 var last_mouse_map_pos = null
 var cells := {}
+var chunck_generated := Set.new()
 
 @export var size := Vector2i(100, 100)
 
+@onready var background_generator: BackgroundGenerator = $BackgroundGenerator
+
 signal mouse_map_pos_changed(last_pos, new_pos: Vector2i)
 signal mouse_map_pos_clicked(pos: Vector2i)
+
+
+func _ready():
+	Game.map = self
 
 
 func _input(event) -> void:
@@ -76,3 +83,7 @@ func place_pattern(layer: int, pos: Vector2i, house: TileMapPattern) -> void:
 
 func get_cell(pos: Vector2i):
 	return cells.get(pos)
+
+
+func generate_chunck(chunck: Vector2i):
+	background_generator.generate_chunck(chunck)

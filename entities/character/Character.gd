@@ -20,6 +20,8 @@ var score: int = 0:
 
 @onready var attackTimer: Timer = Timer.new()
 
+var last_chunck
+
 var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
 
@@ -32,6 +34,8 @@ func _ready():
 	self.add_child(attackTimer)
 	attackTimer.wait_time = 1 / attack_speed
 	attackTimer.one_shot = true
+
+	generate_chuncks()
 
 
 func _input(event):
@@ -50,11 +54,26 @@ func _on_death():
 func toggleRun(value: bool):
 	isRunning = value
 	set_collision_layer_value(5, value)
-	pass
+
+
+func generate_chuncks():
+	var map: Map = Game.map
+
+	var chunck: Vector2i = map.local_to_map(map.to_local(global_position)) / map.background_generator.chunck_size
+
+	if chunck == last_chunck: return
+	last_chunck = chunck
+
+	for x in range(chunck.x - 2, chunck.x + 2):
+		for y in range(chunck.y - 2, chunck.y + 2):
+			map.generate_chunck(Vector2i(x, y))
 
 
 func _physics_process(delta):
 	super._physics_process(delta)
+
+	generate_chuncks()
+
 	var direction = Vector2()
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1

@@ -515,7 +515,8 @@ script = ExtResource("1_7xh8i")
 
 [node name="BackgroundGenerator" type="Node2D" parent="Map"]
 script = ExtResource("2_he6y0")
-nb_houses_per_chunck = Vector2i(300, 500)
+nb_houses_per_chunck = Vector2i(10, 20)
+chunck_size = Vector2i(20, 20)
 
 [node name="Spawner" type="Timer" parent="Map"]
 autostart = true
