@@ -504,12 +504,8 @@ pattern_5 = SubResource("TileMapPattern_0xhhd")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("6_vbuwl")]
-unique_name_in_owner = true
-position = Vector2(10, 10)
-scale = Vector2(2, 2)
-
 [node name="Map" type="TileMap" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.2, 0.2)
 tile_set = SubResource("TileSet_ce6ht")
 format = 2
@@ -526,5 +522,10 @@ nb_houses_per_chunck = Vector2i(300, 500)
 autostart = true
 script = ExtResource("4_h4lx8")
 entity_to_spawn = ExtResource("6_j5ko8")
+
+[node name="Player" parent="." instance=ExtResource("6_vbuwl")]
+unique_name_in_owner = true
+position = Vector2(10, 10)
+scale = Vector2(2, 2)
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]
