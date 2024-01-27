@@ -29,5 +29,9 @@ func seeSomething(body):
 		target = body
 
 
+func _on_death():
+	super._on_death()
+	Game.zombie_count_changed.emit(Game.zombieNumber)
+
 func attack(body):
 	body.attacked.emit()

@@ -516,7 +516,8 @@ script = ExtResource("2_0dh70")
 
 [node name="BackgroundGenerator" type="Node2D" parent="Map"]
 script = ExtResource("3_mdvfb")
-nb_houses_per_chunck = Vector2i(100, 150)
+nb_houses_per_chunck = Vector2i(10, 20)
+chunck_size = Vector2i(20, 20)
 
 [node name="Player" parent="." instance=ExtResource("4_v3wbp")]
 unique_name_in_owner = true
