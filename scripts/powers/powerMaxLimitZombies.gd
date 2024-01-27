@@ -12,5 +12,5 @@ static func get_description() -> String:
 
 
 func _activate():
-	PowerMaxLimitZombies.current_count += 1
-	Game.maxZombie += augment_limit
+    PowerMaxLimitZombies.current_count += 1
+    Game.maxZombie += augment_limit

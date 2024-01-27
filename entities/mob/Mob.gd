@@ -7,17 +7,8 @@ enum ETargetMode {
 	WANDER,
 }
 
-@export var walkSpeed: float = 6000.0
-@export var runSpeed: float = 10000.0
-@export var stamina: float = 10.0
-@export var staminaRecorvery: float = 1.0
-@export var min_stamina: float = 4.0
 @export var wander_refresh_time: float = 1.0
 @export var dispawn_distance: float = 1000.0
-
-var isRunning: bool = false
-
-@onready var currentStamina: float = stamina
 
 var wander_direction := Vector2.ZERO
 var target_pos: Vector2:
@@ -47,16 +38,6 @@ var targetMode: ETargetMode = ETargetMode.WANDER:
 			wander_timer.queue_free()
 			wander_timer = null
 
-var speed: float:
-	get: return runSpeed if isRunning else walkSpeed
-
-
-func toggleRun(value: bool) -> bool:
-	if value and currentStamina < min_stamina:
-		return false
-	isRunning = value
-	return true
-
 
 func get_random_direction():
 	var angle = randf_range(0.0, TAU)
@@ -84,13 +65,6 @@ func _process(delta):
 
 	if not is_instance_valid(target):
 		target = null
-	
-	if isRunning:
-		currentStamina = clamp(currentStamina - delta, 0.0, stamina)
-		if currentStamina == 0.0:
-			toggleRun(false)
-	else:
-		currentStamina = clamp(currentStamina + staminaRecorvery * delta, 0.0, stamina)
 
 
 func _physics_process(delta):

@@ -1,7 +1,6 @@
 extends Node
 
 
-
 var player: Player
 var map: Map
 
@@ -33,3 +32,28 @@ func addXp(value: float):
 
 func get_xp_needed_by_lvl() -> float:
 	return curve_xp_height * exp(curve_xp_width * lvl)
+
+
+func getPower(n_powers: int) -> Array:
+	var powers_file := Array(DirAccess.get_files_at("res://scripts/powers"))
+	if powers_file.size() <= 0:
+		return []
+
+	var powers: Array = []
+
+	for i in range(n_powers):
+		var power_file: String = powers_file.pick_random()
+		var power = load("res://scripts/powers/" + power_file)
+
+		while power.current_count >= power.max_count:
+			power_file = powers_file.pick_random()
+			power = load("res://scripts/powers/" + power_file)
+		
+		powers_file.erase(power_file)
+		powers.append(power)
+
+		if powers_file.size() <= 0:
+			return powers
+		
+	
+	return powers

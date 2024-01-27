@@ -148,12 +148,20 @@ text = "lvl : 0"
 label_settings = SubResource("LabelSettings_4wy8b")
 script = ExtResource("6_of7a4")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="StaminaProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -11.0
 offset_top = -14.0
 offset_right = 11.0
 offset_bottom = -10.0
+show_percentage = false
+
+[node name="LifeProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -10.9
+offset_top = -18.9
+offset_right = 11.1
+offset_bottom = -14.9
 show_percentage = false
 
 [connection signal="score_changed" from="." to="GUI/PanelContainer/MarginContainer/VBoxContainer/Score" method="_on_character_score_changed"]

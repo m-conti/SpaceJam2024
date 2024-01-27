@@ -8,8 +8,8 @@ static var current_count: float = 0
 
 
 func _activate():
-	PowerSpeed.current_count += 1
-	super._activate()
+    PowerSpeed.current_count += 1
+    super._activate()
 
 static func get_description() -> String:
 	return "Makes your zombies faster."

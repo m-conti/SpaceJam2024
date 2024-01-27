@@ -8,4 +8,3 @@ func init_tile(power):
 	(%Description as Label).text = power.get_description()
 	(%Count as Label).text = "%d / %d" % [ power.current_count, power.max_count]
 	Power = power
-	pass

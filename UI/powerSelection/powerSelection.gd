@@ -8,4 +8,3 @@ func _ready():
 		var tile = powerTile.instantiate()
 		(%PowerBox as Container).add_child(tile)
 		(tile as PowerTile).init_tile(power)
-	pass # Replace with function body.

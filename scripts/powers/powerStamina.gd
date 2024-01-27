@@ -12,9 +12,9 @@ static func get_description() -> String:
 
 
 func _activate():
-	PowerStamina.current_count += 1
-	super._activate()
+    PowerStamina.current_count += 1
+    super._activate()
 
 
 func _activate_on_zombie(zombie: Zombie):
-    zombie.stamina *= stamina_factor
+    zombie.max_stamina *= stamina_factor
