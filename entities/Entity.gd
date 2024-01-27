@@ -2,7 +2,15 @@ class_name Entity
 extends CharacterBody2D
 
 
-@export var max_life: int = 1
+@export var max_life: int = 1:
+	set(value):
+		if max_life == value: return
+		
+		var diff: int = value - max_life
+		diff = diff if diff > 0 else 0
+		
+		max_life = value
+		life += diff 
 
 @onready var life: int = max_life:
 	set(value):
