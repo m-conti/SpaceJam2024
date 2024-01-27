@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dioyvpfc1cdvf"]
+[gd_scene load_steps=16 format=3 uid="uid://dioyvpfc1cdvf"]
 
 [ext_resource type="Script" path="res://enitities/mob/Human.gd" id="1_5qxiv"]
+[ext_resource type="PackedScene" uid="uid://5dsumrvtxacm" path="res://enitities/mob/Zombie.tscn" id="2_0uny4"]
 [ext_resource type="Texture2D" uid="uid://b3vku5cepq6ra" path="res://assets/sprites/Zombie2.png" id="2_ngqlf"]
+[ext_resource type="PackedScene" uid="uid://ctrrghb7v7ftn" path="res://weapon/gun.tscn" id="3_ly3h6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xe1j"]
 
@@ -76,6 +78,7 @@ radius = 120.0
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_5qxiv")
+zombie_scene = ExtResource("2_0uny4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xe1j")
@@ -90,6 +93,8 @@ collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision"]
 polygon = PackedVector2Array(100, -100, 100, 100, 0, 0)
+
+[node name="Gun" parent="Vision" instance=ExtResource("3_ly3h6")]
 
 [node name="Hearing" type="Area2D" parent="."]
 unique_name_in_owner = true
