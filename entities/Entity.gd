@@ -13,6 +13,7 @@ extends CharacterBody2D
 		diff = diff if diff > 0 else 0
 
 		max_life = value
+		_on_life_changed()
 		life += diff 
 
 @onready var life: int = max_life:
@@ -20,11 +21,14 @@ extends CharacterBody2D
 		if life == value: return
 		
 		life = value
+		_on_life_changed()
 		if life <= 0:
 			_on_death()
 
 
 func _on_life_changed():
+	if progress_bar == null: return
+
 	Anim.animate(progress_bar, "max_value", max_life, 0.5)
 	Anim.animate(progress_bar, "value", life, 0.5)
 

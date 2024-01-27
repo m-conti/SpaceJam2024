@@ -526,5 +526,6 @@ script = ExtResource("4_h4lx8")
 unique_name_in_owner = true
 position = Vector2(10, 10)
 scale = Vector2(2, 2)
+max_life = 10
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]

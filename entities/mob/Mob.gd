@@ -21,7 +21,12 @@ var isRunning: bool = false
 
 var wander_direction := Vector2.ZERO
 var target_pos: Vector2:
-	get: return (global_position + wander_direction*10.0) if targetMode == ETargetMode.WANDER else target.position
+	get:
+		if targetMode == ETargetMode.WANDER:
+			return global_position + wander_direction
+		if is_instance_valid(target):
+			return target.global_position
+		return global_position
 
 var target: CharacterBody2D:
 	set(value):
