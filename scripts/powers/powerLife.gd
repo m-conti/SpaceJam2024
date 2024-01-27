@@ -11,10 +11,11 @@ func _activate():
     PowerLife.current_count += 1
     super._activate()
 
+
 static func get_description() -> String:
-	return "Increases the life of your zombies by 1."
+    return "Increases the life of your zombies by 1."
 
 
 func _activate_on_zombie(zombie: Zombie):
-	zombie.max_life += life
+    zombie.max_life += life
 

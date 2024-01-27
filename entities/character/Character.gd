@@ -66,6 +66,11 @@ func _physics_process(delta):
 
 	generate_chuncks()
 
+	velocity = get_direction().normalized() * speed * delta
+	move_and_slide()
+
+
+func get_direction():
 	var direction = Vector2()
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
@@ -75,8 +80,7 @@ func _physics_process(delta):
 		direction.y += 1
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
-	velocity = direction.normalized() * speed * delta
-	move_and_slide()
+	return direction
 
 
 func attack():

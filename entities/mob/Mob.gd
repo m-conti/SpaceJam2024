@@ -72,15 +72,11 @@ func _physics_process(delta):
 	if targetMode != ETargetMode.WANDER and target == null:
 		return
 
-	var direction = getDirectionByTargetMode()
-	direction = direction.normalized()
-
-	velocity = direction * speed * delta
-
+	velocity = get_direction().normalized() * speed * delta
 	move_and_slide()
 
 
-func getDirectionByTargetMode():
+func get_direction():
 	if targetMode == ETargetMode.FLEE:
 		return position - target_pos
 	elif targetMode == ETargetMode.ATTACK:
