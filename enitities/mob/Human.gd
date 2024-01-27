@@ -17,13 +17,15 @@ signal attacked
 
 
 func _ready():
+	super._ready()
 	(%Vision as Area2D).body_entered.connect(seeSomething)
 	(%Hearing as Area2D).body_entered.connect(hearSomathing)
 	attacked.connect(_on_attacked)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	super._process(delta)
+
 
 func _physics_process(delta):
 	super._physics_process(delta)
@@ -40,10 +42,9 @@ func hearSomathing(body: CharacterBody2D):
 
 
 func setTarget(body: CharacterBody2D):
-	print("SET TARGET :", body, target)
 	if not target:
 		target = body
-	elif body.position.distance_to(position) < target.position.distance_to(position):
+	elif body.position.distance_to(position) < target_pos.distance_to(position):
 		target = body
 	if target == body:
 		changeTargetModByHumanType()
@@ -51,16 +52,16 @@ func setTarget(body: CharacterBody2D):
 
 func changeLookAtByHumanType():
 	if _humanType == EHumanType.FEARLESS:
-		(%Vision).look_at(target.position)
+		(%Vision).look_at(target_pos)
 	elif _humanType == EHumanType.FEARFUL:
-		(%Vision).look_at(target.position)
+		(%Vision).look_at(target_pos)
 		(%Vision as Area2D).rotate(PI)
 	elif _humanType == EHumanType.AGGRESSIVE:
-		(%Vision).look_at(target.position)
+		(%Vision).look_at(target_pos)
 	elif _humanType == EHumanType.DEFENSIVE:
-		(%Vision).look_at(target.position)
+		(%Vision).look_at(target_pos)
 	elif _humanType == EHumanType.NEUTRAL:
-		(%Vision).look_at(target.position)
+		(%Vision).look_at(target_pos)
 		(%Vision as Area2D).rotate(PI)
 
 
@@ -68,14 +69,13 @@ func changeTargetModByHumanType():
 	if _humanType == EHumanType.FEARLESS:
 		targetMode = ETargetMode.ATTACK
 	elif _humanType == EHumanType.FEARFUL:
-		targetMode = ETargetMode.FLY
+		targetMode = ETargetMode.FLEE
 	elif _humanType == EHumanType.AGGRESSIVE:
 		targetMode = ETargetMode.ATTACK
 	elif _humanType == EHumanType.DEFENSIVE:
-		targetMode = ETargetMode.FLY
+		targetMode = ETargetMode.FLEE
 	elif _humanType == EHumanType.NEUTRAL:
-		targetMode = ETargetMode.FLY
-	print("CHANGE TARGET_MODE :", targetMode)
+		targetMode = ETargetMode.FLEE
 
 
 func die():

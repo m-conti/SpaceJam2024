@@ -2,54 +2,87 @@ extends CharacterBody2D
 class_name Mob
 
 enum ETargetMode {
-	FLY,
+	FLEE,
 	ATTACK,
-	WALK,
+	WANDER,
 }
 
 @export var walkSpeed: float = 6000.0
 @export var runSpeed: float = 10000.0
 @export var stamina: float = 10.0
 @export var staminaRecorvery: float = 1.0
+@export var wander_refresh_time: float = 1.0
 var isRunning: bool = false
 
-var target: CharacterBody2D
+var wander_direction := Vector2.ZERO
+var target_pos: Vector2:
+	get: return (position + wander_direction*10.0) if targetMode == ETargetMode.WANDER else target.position
 
-var targetMode: ETargetMode = ETargetMode.WALK
+var target: CharacterBody2D:
+	set(value):
+		target = value
+		if target == null:
+			targetMode = ETargetMode.WANDER
+
+var wander_timer: Timer
+var targetMode: ETargetMode = ETargetMode.WANDER:
+	set(value):
+		if targetMode == value:
+			return
+		
+		targetMode = value
+		if targetMode == ETargetMode.WANDER:
+			create_wander_timer()
+		elif wander_timer != null:
+			wander_timer.queue_free()
+			wander_timer = null
 
 var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
 
 func toggleRun(value: bool):
 	isRunning = value
-	pass
 
-# Called when the node enters the scene tree for the first time.
+
+func get_random_direction():
+	var angle = randf_range(0.0, TAU)
+	return Vector2(cos(angle), sin(angle))
+
+
+func create_wander_timer():
+	wander_direction = get_random_direction()
+	wander_timer = Timer.new()
+	wander_timer.set_wait_time(wander_refresh_time)
+	wander_timer.autostart = true
+	wander_timer.timeout.connect(func(): wander_direction = get_random_direction())
+	add_child(wander_timer)
+
+
 func _ready():
-	pass # Replace with function body.
+	create_wander_timer()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_instance_valid(target) == false:
+	if not is_instance_valid(target):
 		target = null
 
+
 func _physics_process(delta):
-	if target == null:
+	if targetMode != ETargetMode.WANDER and target == null:
 		return
 
 	var direction = getDirectionByTargetMode()
 	direction = direction.normalized()
 
 	velocity = direction * speed * delta
+
 	move_and_slide()
 
+
 func getDirectionByTargetMode():
-	if targetMode == ETargetMode.FLY:
-		return position - target.position
+	if targetMode == ETargetMode.FLEE:
+		return position - target_pos
 	elif targetMode == ETargetMode.ATTACK:
-		return target.position - position
-	elif targetMode == ETargetMode.WALK:
-		return target.position - position
-	else:
-		return Vector2.ZERO
+		return target_pos - position
+	elif targetMode == ETargetMode.WANDER:
+		return wander_direction

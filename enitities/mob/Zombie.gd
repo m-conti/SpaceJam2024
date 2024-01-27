@@ -22,7 +22,7 @@ func _process(delta):
 func seeSomething(body):
 	if target == null or target == player:
 		target = body
-	elif body.position.distance_to(position) < target.position.distance_to(position):
+	elif body.position.distance_to(position) < target_pos.distance_to(position):
 		target = body
 
 
