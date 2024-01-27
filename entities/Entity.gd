@@ -82,6 +82,8 @@ func _on_death():
 func _ready():
 	life_progress_bar.max_value = max_life
 	life_progress_bar.value = life
+	stamina_progress_bar.max_value = max_stamina
+	stamina_progress_bar.value = stamina
 
 
 func _physics_process(delta: float):
