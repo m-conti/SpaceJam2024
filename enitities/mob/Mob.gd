@@ -15,7 +15,7 @@ enum ETargetMode {
 @export var wander_refresh_time: float = 1.0
 var isRunning: bool = false
 
-@export var currentStamina: float = stamina
+@onready var currentStamina: float = stamina
 
 var wander_direction := Vector2.ZERO
 var target_pos: Vector2:
