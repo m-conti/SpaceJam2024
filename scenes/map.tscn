@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://rulg1r7sntw4"]
+[gd_scene load_steps=16 format=3 uid="uid://rulg1r7sntw4"]
 
 [ext_resource type="Script" path="res://scripts/map/map.gd" id="1_7xh8i"]
 [ext_resource type="Texture2D" uid="uid://br1inv15xttr3" path="res://tileset.jpeg" id="1_f71fl"]
@@ -502,6 +502,9 @@ pattern_3 = SubResource("TileMapPattern_c7brr")
 pattern_4 = SubResource("TileMapPattern_504sf")
 pattern_5 = SubResource("TileMapPattern_0xhhd")
 
+[sub_resource type="LabelSettings" id="LabelSettings_4wy8b"]
+font_size = 30
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Map" type="TileMap" parent="."]
@@ -527,5 +530,29 @@ entity_to_spawn = ExtResource("6_j5ko8")
 unique_name_in_owner = true
 position = Vector2(10, 10)
 scale = Vector2(2, 2)
+
+[node name="GUI" type="CanvasLayer" parent="Player"]
+
+[node name="PanelContainer" type="PanelContainer" parent="Player/GUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 50.0
+offset_right = -54.0
+offset_bottom = 112.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Player/GUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Player/GUI/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Score : 12"
+label_settings = SubResource("LabelSettings_4wy8b")
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]
