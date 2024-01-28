@@ -65,6 +65,8 @@ func generate_chuncks():
 
 	map.generate_chunck_around(chunck)
 
+	
+
 
 func _physics_process(delta):
 	super._physics_process(delta)
