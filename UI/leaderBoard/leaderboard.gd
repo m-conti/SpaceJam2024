@@ -9,6 +9,7 @@ func addScoreLine(line):
 	scoreLine.setRank(line.rank)
 	%Container.add_child(scoreLine)
 
+
 func _ready():
 	var board = await _get_leaderboards()
 	for item in board.items:
@@ -16,5 +17,5 @@ func _ready():
 
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
-	pass # Replace with function body.
+	Game.back_scene.visible = true
+	queue_free()
