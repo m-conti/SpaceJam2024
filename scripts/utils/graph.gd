@@ -94,8 +94,8 @@ static func a_star(map: Map, start_pos: Vector2i, end_pos: Vector2i, movable_cas
 	var f_score: Dictionary = {}
 	var parent: Dictionary = {}
 	
-	for x in range(map.size.x):
-		for y in range(map.size.y):
+	for x in range(map.background_generator.chunck_size.x + 5):
+		for y in range(map.background_generator.chunck_size.y + 5):
 			g_score[Vector2i(x, y)] = INF
 			f_score[Vector2i(x, y)] = INF
 	
