@@ -24,7 +24,9 @@ const entity_to_spawn := [
 func get_entity_to_spawn(difficulty: float) -> PackedScene:
 	var weights: Dictionary = {}
 	for entity in entity_to_spawn:
-		weights[entity] = 1 / (1 + abs(difficulty - entity.score)**spawn_difficulty_variance)
+		var human: Human = entity.instantiate()
+		weights[entity] = 1 / (1 + abs(difficulty - human.score)**spawn_difficulty_variance)
+		human.queue_free()
 
 	var total_weight: float = 0.0
 	for entity in entity_to_spawn:
