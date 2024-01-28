@@ -1,11 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbkwji43erx3k"]
+[gd_scene load_steps=5 format=3 uid="uid://bbkwji43erx3k"]
 
 [ext_resource type="AudioStream" uid="uid://crc4jlw7vaejw" path="res://assets/musics/knock-knock-horror-creepy-scary-thriller-trailer-teaser-177239.mp3" id="1_1cjpm"]
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_rqwbj"]
 [ext_resource type="Theme" uid="uid://cb6ywj2t3tfv7" path="res://theme.tres" id="2_2p4eb"]
+[ext_resource type="VideoStream" path="res://videos.ogv" id="4_uvsc0"]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource("1_rqwbj")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_uvsc0")
+autoplay = true
+expand = true
+loop = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
