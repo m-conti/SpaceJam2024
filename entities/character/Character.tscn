@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bjtq5dlsqxvkt" path="res://assets/LightSprite.png" id="7_cvamc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igy0t"]
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5b7n"]
 atlas = ExtResource("2_gk2cc")
