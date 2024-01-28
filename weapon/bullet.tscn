@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://weapon/bullet.gd" id="1_ckc3s"]
 
 [sub_resource type="Gradient" id="Gradient_ihegj"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_m5oct"]
 gradient = SubResource("Gradient_ihegj")

@@ -4,7 +4,10 @@ extends Entity
 var FlagCommand: PackedScene = preload("res://entities/command/MovementCommand.tscn")
 
 @export var attack_speed: float = 0.5:
-	set(value): attackTimer.wait_time = 1 / value
+	set(value):
+		if attackTimer == null:
+			return
+		attackTimer.wait_time = 1 / value
 
 var score: int = 0:
 	set(value):
@@ -16,6 +19,7 @@ var score: int = 0:
 		score_changed.emit(value)
 
 @onready var attackTimer: Timer = Timer.new()
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 var last_chunck
 @onready var sprite: AnimatedSprite2D = %Sprite
@@ -28,8 +32,18 @@ func _ready():
 	super._ready()
 	Game.player = self
 	self.add_child(attackTimer)
+
+	var x: int = 0
+	while not Game.map.can_move(Vector2i(x, 0)):
+		x += 1
+	
+	print(Vector2i(x, 0))
+
+	global_position = Game.map.to_global(Game.map.map_to_local(Vector2i(x, 0)))
+
 	attackTimer.wait_time = 1 / attack_speed
 	attackTimer.one_shot = true
+	hit.connect(func(): animation_player.play("Hit"))
 
 	generate_chuncks()
 
