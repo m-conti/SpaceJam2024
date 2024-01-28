@@ -2,10 +2,6 @@ class_name FearHuman
 extends Human
 
 
-static func get_score() -> float:
-	return 1.0
-
-
 func change_target_mode():
 	if target == null:
 		return
