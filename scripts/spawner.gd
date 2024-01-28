@@ -2,10 +2,10 @@ class_name Spawner
 extends Timer
 
 
-var entity_to_spawn := {
-	preload("res://entities/mob/Human/FearHuman.tscn"): 1.0,
-	preload("res://entities/mob/Human/Hunter.tscn"): 1.0,
-}
+var entity_to_spawn := [
+	preload("res://entities/mob/Human/FearHuman.tscn"),
+	preload("res://entities/mob/Human/Hunter.tscn"),
+]
 
 @export var spawn_count := Vector2i(1, 10)
 @export var min_spawn_dist: float = 20.0
