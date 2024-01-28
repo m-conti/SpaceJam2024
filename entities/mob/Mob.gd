@@ -57,7 +57,7 @@ func get_random_direction():
 		func(acc: Vector2, e: Node2D):
 			return acc + e.global_position,
 		Vector2.ZERO
-	)
+	) / close_entities.size()
 
 	var angle = randf_range(0.0, TAU)
 	return 20.0*Vector2(cos(angle), sin(angle)) + barycentre - global_position
