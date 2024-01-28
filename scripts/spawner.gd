@@ -2,7 +2,7 @@ class_name Spawner
 extends Timer
 
 
-var entity_to_spawn := [
+const entity_to_spawn := [
 	preload("res://entities/mob/Human/FearHuman.tscn"),
 	preload("res://entities/mob/Human/Hunter.tscn"),
 ]
