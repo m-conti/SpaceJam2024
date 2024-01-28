@@ -11,7 +11,6 @@ const zombie_scene: PackedScene = preload("res://entities/mob/Zombie.tscn")
 @onready var hearing: Area2D = %Hearing
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-
 static func get_entity_group():
 	return "human"
 

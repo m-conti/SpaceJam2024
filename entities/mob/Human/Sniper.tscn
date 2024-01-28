@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ha2ckbqqupmh"]
+[gd_scene load_steps=3 format=3 uid="uid://ha2ckbqqupmh"]
 
 [ext_resource type="PackedScene" uid="uid://r0b6k06s2nkm" path="res://entities/mob/Human/Hunter.tscn" id="1_dg8hl"]
+[ext_resource type="SpriteFrames" uid="uid://ruu2p2rracim" path="res://entities/mob/Anim/Sniper.tres" id="2_m01la"]
 
 [node name="Sniper" instance=ExtResource("1_dg8hl")]
 attack_range = 800.0
 wander_refresh_time = 4.0
 walkSpeed = 50.0
 runSpeed = 1000.0
+
+[node name="Sprite" parent="." index="1"]
+sprite_frames = ExtResource("2_m01la")
+animation = &"WalkUp"
 
 [node name="Vision" parent="." index="2"]
 scale = Vector2(7, 1.5)

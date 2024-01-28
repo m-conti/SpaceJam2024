@@ -2619,24 +2619,19 @@ max_spawn_dist = 12.0
 spawn_range = 2.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Map"]
-color = Color(0.392157, 0.392157, 0.392157, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="Player" parent="." instance=ExtResource("6_vbuwl")]
 unique_name_in_owner = true
 position = Vector2(10, 10)
 scale = Vector2(2, 2)
 wall_min_slide_angle = 0.0
-attack_speed = 0.5
-staminaRecorvery = 1.0
 walkSpeed = 10000.0
-runSpeed = 16000.0
-max_stamina = 10.0
-min_stamina = 4.0
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_qct7t")
-volume_db = -30.0
+volume_db = -20.0
 autoplay = true
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]

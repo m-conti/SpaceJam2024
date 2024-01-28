@@ -1,74 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://5dsumrvtxacm"]
+[gd_scene load_steps=7 format=3 uid="uid://5dsumrvtxacm"]
 
 [ext_resource type="Script" path="res://entities/mob/Zombie.gd" id="1_ir1pe"]
-[ext_resource type="Texture2D" uid="uid://dqu15ssnq8vt0" path="res://assets/sprites/Zombie.png" id="2_6i7fr"]
+[ext_resource type="SpriteFrames" uid="uid://h8e0y5vvsfhi" path="res://entities/mob/Anim/Zombie.tres" id="2_wjx3v"]
 [ext_resource type="AudioStream" uid="uid://cnsncjopgh1km" path="res://assets/sounds/zombie_breath.wav" id="3_uya31"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xe1j"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2nmo2"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4jgs"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hirmi"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ug8f"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_su384"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ygnv"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xcha"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1r7x"]
-atlas = ExtResource("2_6i7fr")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0672c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2nmo2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f4jgs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hirmi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ug8f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_su384")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ygnv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xcha")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1r7x")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tmj5k"]
 radius = 120.0
@@ -86,14 +22,17 @@ runSpeed = 8000.0
 shape = SubResource("CircleShape2D_2xe1j")
 one_way_collision_margin = 0.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_0672c")
-autoplay = "default"
-frame_progress = 0.549635
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.556863, 1, 0.384314, 1)
+scale = Vector2(0.8, 0.823936)
+sprite_frames = ExtResource("2_wjx3v")
+animation = &"IdleDown"
+autoplay = "IdleDown"
 
 [node name="Vision" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
@@ -102,6 +41,7 @@ debug_color = Color(0.643137, 0.521569, 0, 0.419608)
 
 [node name="AttackArea" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
@@ -112,18 +52,18 @@ debug_color = Color(0.988235, 0, 0.294118, 0.419608)
 unique_name_in_owner = true
 self_modulate = Color(0, 1, 0, 1)
 offset_left = -11.0
-offset_top = -14.0
+offset_top = -18.0
 offset_right = 11.0
-offset_bottom = -10.0
+offset_bottom = -14.0
 show_percentage = false
 
 [node name="LifeProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 offset_left = -10.9
-offset_top = -18.9
+offset_top = -23.0
 offset_right = 11.1
-offset_bottom = -14.9
+offset_bottom = -19.0
 show_percentage = false
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]

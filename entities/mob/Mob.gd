@@ -12,6 +12,11 @@ enum ETargetMode {
 @export var dispawn_distance: float = 1000.0
 @export var group_up_distance: float = 200.0
 
+signal direction_changed(direction: Vector2)
+
+var last_direction := Vector2.DOWN
+@onready var sprite: AnimatedSprite2D = %Sprite
+
 var wander_direction := Vector2.ZERO
 var target_pos: Vector2:
 	get:
@@ -56,6 +61,29 @@ func upgrade(difficulty: float):
 	life *= factor
 
 
+func get_side_of_direction(direction: Vector2):
+	if direction.y > 0.1:
+		return "Down"
+	elif direction.y < 0.1:
+		return "Up"
+	elif abs(direction.x) > 0.1:
+		return "Side"
+	return "Idle"
+
+
+func animate_movement(direction: Vector2):
+	var side: String = get_side_of_direction(direction)
+
+	if side == "Idle":
+		sprite.play("Idle" + get_side_of_direction(last_direction))
+		return
+	
+	last_direction = direction
+	sprite.play("Walk" + side)
+
+	sprite.flip_h = direction.x < 0
+
+
 func get_random_direction():
 	var close_entities: Array = get_tree().get_nodes_in_group(entity_group).filter(
 		func(e: Node2D):
@@ -83,6 +111,7 @@ func create_wander_timer():
 func _ready():
 	super._ready()
 	create_wander_timer()
+	direction_changed.connect(animate_movement)
 
 
 func _process(delta):
@@ -99,7 +128,10 @@ func _physics_process(delta):
 	if targetMode != ETargetMode.WANDER and target == null:
 		return
 
-	velocity = get_direction().normalized() * speed * delta
+	var direction = get_direction().normalized()
+	direction_changed.emit(direction)
+
+	velocity = direction * speed * delta
 	move_and_slide()
 
 

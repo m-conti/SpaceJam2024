@@ -1,74 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dioyvpfc1cdvf"]
+[gd_scene load_steps=11 format=3 uid="uid://dioyvpfc1cdvf"]
 
 [ext_resource type="Script" path="res://entities/mob/Human.gd" id="1_5qxiv"]
-[ext_resource type="Texture2D" uid="uid://b3vku5cepq6ra" path="res://assets/sprites/Zombie2.png" id="2_ngqlf"]
+[ext_resource type="SpriteFrames" uid="uid://lftc71p37x5q" path="res://entities/mob/Anim/Human.tres" id="2_61bkm"]
 [ext_resource type="Texture2D" uid="uid://d32635rd05ibc" path="res://assets/shadow.png" id="5_77416"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xe1j"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7owp6"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_df0l4"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kljve"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvqpb"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2e56"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5pnl4"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7bbri"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8xxdr"]
-atlas = ExtResource("2_ngqlf")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ssomn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7owp6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_df0l4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kljve")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvqpb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2e56")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5pnl4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7bbri")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8xxdr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix4jg"]
 radius = 120.0
@@ -139,9 +75,11 @@ min_stamina = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xe1j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ssomn")
-autoplay = "default"
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_61bkm")
+animation = &"IdleDown"
+autoplay = "IdleDown"
 
 [node name="Vision" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -155,7 +93,7 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 rotation = -0.785398
 scale = Vector2(0.75, 0.75)
 color = Color(1, 0, 0, 0.588235)
-energy = 0.4
+energy = 0.8
 shadow_enabled = true
 texture = ExtResource("5_77416")
 offset = Vector2(100, 100)
@@ -172,18 +110,18 @@ debug_color = Color(0.717647, 0.25098, 1, 0.0588235)
 unique_name_in_owner = true
 self_modulate = Color(0, 1, 0, 1)
 offset_left = -11.0
-offset_top = -14.0
+offset_top = -23.0
 offset_right = 11.0
-offset_bottom = -10.0
+offset_bottom = -19.0
 show_percentage = false
 
 [node name="LifeProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 offset_left = -10.9
-offset_top = -18.9
+offset_top = -28.0
 offset_right = 11.1
-offset_bottom = -14.9
+offset_bottom = -24.0
 show_percentage = false
 
 [node name="Scream" type="AudioStreamPlayer2D" parent="."]
