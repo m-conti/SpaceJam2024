@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var walkSpeed: float = 6000.0
 @export var runSpeed: float = 16000.0
 
+signal hit
+
 var isRunning: bool = false
 
 var speed: float:
@@ -29,6 +31,9 @@ var speed: float:
 	set(value):
 		if life == value: return
 		
+		if value < life:
+			hit.emit()
+
 		life = value
 		_on_life_changed()
 		if life <= 0:
