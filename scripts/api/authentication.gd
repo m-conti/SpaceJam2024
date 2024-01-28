@@ -13,7 +13,8 @@ signal change_player_name_completed(value: Dictionary)
 signal get_name_completed(value: Dictionary)
 
 func _ready():
-	_authentication_request()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	await _authentication_request()
 
 
 func _authentication_request():
