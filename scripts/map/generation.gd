@@ -22,6 +22,9 @@ func create_houses(chunck: Vector2i) -> Array:
 		while true:
 			pos = Vector2i(randi_range(0, chunck_size.x), randi_range(0, chunck_size.y)) + chunck * chunck_size
 
+			if chunck == Vector2i.ZERO and pos.x < 8 and pos.y < 8:
+				continue
+
 			if map.is_space_empty(pos, house.get_used_cells()):
 				break
 			

@@ -30,15 +30,18 @@ func _process(delta):
 	change_looking_direction()
 
 
-func seeSomething(body: CharacterBody2D):
+func seeSomething(body):
 	setTarget(body)
 
 
-func hearSomathing(body: CharacterBody2D):
+func hearSomathing(body):
 	setTarget(body)
 
 
-func setTarget(body: CharacterBody2D):
+func setTarget(body):
+	if not body is Entity:
+		return
+
 	if not target:
 		%Scream.play()
 		target = body
@@ -71,6 +74,7 @@ func die():
 	if Game.zombieNumber >= Game.maxZombie:
 		Game.addXp(2)
 		return
+	
 	var zombie: Node2D = zombie_scene.instantiate()
 	get_parent().add_child(zombie)
 

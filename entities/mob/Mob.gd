@@ -64,7 +64,7 @@ func upgrade(difficulty: float):
 func get_side_of_direction(direction: Vector2):
 	if direction.y > 0.1:
 		return "Down"
-	elif direction.y < 0.1:
+	elif direction.y < -0.1:
 		return "Up"
 	elif abs(direction.x) > 0.1:
 		return "Side"
@@ -81,7 +81,7 @@ func animate_movement(direction: Vector2):
 	last_direction = direction
 	sprite.play("Walk" + side)
 
-	sprite.flip_h = direction.x < 0
+	sprite.flip_h = direction.x > 0
 
 
 func get_random_direction():
