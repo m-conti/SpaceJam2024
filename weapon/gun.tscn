@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctrrghb7v7ftn"]
+[gd_scene load_steps=3 format=3 uid="uid://ctrrghb7v7ftn"]
 
 [ext_resource type="Script" path="res://weapon/gun.gd" id="1_pexvm"]
+[ext_resource type="AudioStream" uid="uid://cuskffduylrf5" path="res://assets/sounds/shot.wav" id="2_6530a"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_pexvm")
@@ -9,5 +10,10 @@ shoot_delay = 0.8
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_6530a")
+volume_db = -25.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
