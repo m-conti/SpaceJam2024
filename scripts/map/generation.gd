@@ -47,10 +47,10 @@ func generate_chunck(chunck: Vector2i) -> void:
 	
 	var used_cell: Set = Set.from(map.get_used_cells(map.TERRAIN_LAYER))
 
-	for x in range(-1, map.size.x + 1):
-		for y in range(-1, map.size.y + 1):
-			var cell: Vector2i = Vector2i(x, y)
+	for x in range(chunck_size.x):
+		for y in range(chunck_size.y):
+			var cell := Vector2i(x, y) + chunck * chunck_size
 			if used_cell.has(cell):
 				continue
 			
-			# map.set_cell(map.TERRAIN_LAYER, cell, 0, grass_cells.pick_random())
+			map.set_cell(map.TERRAIN_LAYER, cell, 1, grass_cells.pick_random())

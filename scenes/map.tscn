@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://rulg1r7sntw4"]
+[gd_scene load_steps=17 format=3 uid="uid://rulg1r7sntw4"]
 
 [ext_resource type="Script" path="res://scripts/map/map.gd" id="1_7xh8i"]
 [ext_resource type="Texture2D" uid="uid://br1inv15xttr3" path="res://tileset.jpeg" id="1_f71fl"]
+[ext_resource type="Texture2D" uid="uid://crpjdtj22mkd5" path="res://assets/WhiteSquare.png" id="2_gd4cc"]
 [ext_resource type="Script" path="res://scripts/map/generation.gd" id="2_he6y0"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_h4lx8"]
 [ext_resource type="PackedScene" uid="uid://da3uspmrjxjl" path="res://entities/character/Character.tscn" id="6_vbuwl"]
@@ -24,6 +25,9 @@ tile_data = PackedInt32Array(0, 65536, 1, 65536, 65536, 1, 1, 65536, 1, 65537, 6
 [sub_resource type="TileMapPattern" id="TileMapPattern_0xhhd"]
 tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 1)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d7jvv"]
+polygon = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vncbl"]
 texture = ExtResource("1_f71fl")
 margins = Vector2i(42, 33)
@@ -38,6 +42,7 @@ texture_region_size = Vector2i(100, 100)
 0:0/0/terrains_peering_bit/bottom_side = 0
 1:0/0 = 0
 1:0/0/terrain_set = 0
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_d7jvv")
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
@@ -1348,8 +1353,17 @@ texture_region_size = Vector2i(100, 100)
 17:23/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:23/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j7bie"]
+texture = ExtResource("2_gd4cc")
+margins = Vector2i(10, 10)
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_ce6ht"]
 tile_size = Vector2i(100, 100)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 7
 physics_layer_0/collision_mask = 7
 terrain_set_0/mode = 2
@@ -1358,6 +1372,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "is_rigid"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_vncbl")
+sources/1 = SubResource("TileSetAtlasSource_j7bie")
 pattern_0 = SubResource("TileMapPattern_mjqsk")
 pattern_1 = SubResource("TileMapPattern_gptr2")
 pattern_2 = SubResource("TileMapPattern_eyhy5")
@@ -1374,6 +1389,7 @@ tile_set = SubResource("TileSet_ce6ht")
 format = 2
 layer_0/name = "Rigid"
 layer_1/name = "Terrain"
+layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array()
 script = ExtResource("1_7xh8i")
 
@@ -1381,6 +1397,7 @@ script = ExtResource("1_7xh8i")
 script = ExtResource("2_he6y0")
 nb_houses_per_chunck = Vector2i(10, 20)
 chunck_size = Vector2i(20, 20)
+grass_cells = Array[Vector2i]([Vector2i(0, 0)])
 
 [node name="Spawner" type="Timer" parent="Map"]
 wait_time = 4.0
@@ -1388,6 +1405,9 @@ autostart = true
 script = ExtResource("4_h4lx8")
 spawn_count = Vector2i(1, 5)
 min_spawn_dist = 30.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Map"]
+color = Color(0.392157, 0.392157, 0.392157, 1)
 
 [node name="Player" parent="." instance=ExtResource("6_vbuwl")]
 unique_name_in_owner = true
