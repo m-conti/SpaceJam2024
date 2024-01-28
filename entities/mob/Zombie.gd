@@ -3,12 +3,11 @@ class_name Zombie
 
 @onready var player = get_parent().get_node("%Player")
 
-
 func _ready():
 	super._ready()
 	(%Vision as Area2D).body_entered.connect(seeSomething)
 	(%AttackArea).body_entered.connect(attack)
-
+	(%AttackArea).area_entered.connect(reachCommand)
 
 func toggleRun(value: bool) -> bool:
 	if not super.toggleRun(value): return false
@@ -18,14 +17,16 @@ func toggleRun(value: bool) -> bool:
 
 func _process(delta):
 	super._process(delta)
-	if target != null and target != player:
+	if target != null and target.is_in_group("human"):
 		targetMode = ETargetMode.ATTACK
 		toggleRun(true)
 
 func seeSomething(body):
 	if not body is Entity:
 		return
-	if target == null or target == player:
+	#if target and target.is_in_group("command"):
+		#return
+	if target == null or not target.is_in_group("human"):
 		target = body
 	elif body.position.distance_to(position) < target_pos.distance_to(position):
 		target = body
@@ -37,4 +38,14 @@ func _on_death():
 	Game.zombie_count_changed.emit(Game.zombieNumber)
 
 func attack(body):
-	body.attacked.emit()
+	if body.is_in_group("human"):
+		body.attacked.emit()
+
+func reachCommand(area):
+	if target == null: return
+	if area.get_parent().is_in_group("command") and target.is_in_group("command"):
+		target = null
+
+func command(body: Node2D):
+	targetMode = ETargetMode.COMMAND
+	target = body

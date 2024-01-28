@@ -1,6 +1,7 @@
 class_name Player
 extends Entity
 
+var FlagCommand: PackedScene = preload("res://entities/command/MovementCommand.tscn")
 
 @export var attack_speed: float = 0.5:
 	set(value): attackTimer.wait_time = 1 / value
@@ -39,6 +40,8 @@ func _input(event):
 		self.toggleRun(false)
 	if event.is_action_pressed("attack"):
 		askToAttack()
+	if event.is_action_pressed("command"):
+		onCommand()
 
 
 func _on_death():
@@ -97,3 +100,9 @@ func askToAttack():
 		attack()
 	elif not attackTimer.timeout.is_connected(askToAttack):
 		attackTimer.timeout.connect(askToAttack)
+
+func onCommand():
+	var command = FlagCommand.instantiate()
+	command.position = get_global_mouse_position()
+	get_parent().add_child(command)
+	pass

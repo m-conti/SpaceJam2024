@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://fhrf0ptqn7t"]
+
+[ext_resource type="Script" path="res://entities/command/MovementCommand.gd" id="1_blqut"]
+[ext_resource type="Texture2D" uid="uid://bajf3bmtyihb0" path="res://assets/sprites/flag/Dragon-Slayer-0.PNG" id="1_c5q4b"]
+[ext_resource type="Texture2D" uid="uid://cfhd1jrm27abv" path="res://assets/sprites/flag/Dragon-Slayer-1.PNG" id="2_v0ehy"]
+[ext_resource type="Texture2D" uid="uid://cfhiocynvkcwq" path="res://assets/sprites/flag/Dragon-Slayer-2.PNG" id="3_dng0c"]
+[ext_resource type="Texture2D" uid="uid://cedashbnxb15u" path="res://assets/sprites/flag/Dragon-Slayer-3.PNG" id="4_0xvjw"]
+[ext_resource type="Texture2D" uid="uid://bwu8gicioa8v8" path="res://assets/sprites/flag/Dragon-Slayer-4.PNG" id="5_12i2f"]
+[ext_resource type="Texture2D" uid="uid://ccw4dxfp1dlwr" path="res://assets/sprites/flag/Dragon-Slayer-5.PNG" id="6_2in5t"]
+[ext_resource type="Texture2D" uid="uid://c3r5xg3xstxx3" path="res://assets/sprites/flag/Dragon-Slayer-6.PNG" id="7_p34pq"]
+[ext_resource type="Texture2D" uid="uid://j5ysf85tfkbo" path="res://assets/sprites/flag/Dragon-Slayer-7.PNG" id="8_u2oh3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yly4j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c5q4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v0ehy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dng0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0xvjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_12i2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2in5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p34pq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u2oh3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mym4v"]
+radius = 100.0
+
+[node name="MovementCommand" type="Node2D"]
+script = ExtResource("1_blqut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_yly4j")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mym4v")

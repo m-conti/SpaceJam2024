@@ -5,6 +5,7 @@ enum ETargetMode {
 	FLEE,
 	ATTACK,
 	WANDER,
+	COMMAND,
 }
 
 @export var wander_refresh_time: float = 1.0
@@ -19,7 +20,7 @@ var target_pos: Vector2:
 			return target.global_position
 		return global_position
 
-var target: CharacterBody2D:
+var target: Node2D:
 	set(value):
 		target = value
 		if target == null:
@@ -79,7 +80,7 @@ func _physics_process(delta):
 func get_direction():
 	if targetMode == ETargetMode.FLEE:
 		return position - target_pos
-	elif targetMode == ETargetMode.ATTACK:
+	elif targetMode == ETargetMode.ATTACK or targetMode == ETargetMode.COMMAND:
 		return target_pos - position
 	elif targetMode == ETargetMode.WANDER:
 		return -wander_direction

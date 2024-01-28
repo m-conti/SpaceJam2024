@@ -8,16 +8,16 @@ static var current_count: int = 0
 
 
 func _activate():
-    PowerLife.current_count += 1
-    super._activate()
+	PowerLife.current_count += 1
+	super._activate()
 
 
 static func get_description() -> String:
-    return "Increases the life of your zombies by 1."
+	return "Increases the life of your zombies by 1."
 
 static func get_display_name() -> String:
-    return "Life"
+	return "Life"
 
 func _activate_on_zombie(zombie: Zombie):
-    zombie.max_life += life
+	zombie.max_life += life
 
