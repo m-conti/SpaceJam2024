@@ -103,7 +103,6 @@ rotation = -0.785398
 scale = Vector2(0.5, 0.5)
 color = Color(1, 0, 0, 1)
 energy = 0.4
-shadow_enabled = true
 texture = ExtResource("5_77416")
 offset = Vector2(100, 100)
 
