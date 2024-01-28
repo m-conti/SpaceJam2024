@@ -18,6 +18,7 @@ var score: int = 0:
 @onready var attackTimer: Timer = Timer.new()
 
 var last_chunck
+@onready var sprite: AnimatedSprite2D = %Sprite
 
 signal score_changed(value: int)
 signal spawn_zombie(zombie: Zombie)
@@ -68,7 +69,7 @@ func generate_chuncks():
 
 	map.generate_chunck_around(chunck)
 
-	
+
 
 
 func _physics_process(delta):
@@ -90,6 +91,18 @@ func get_direction():
 		direction.y += 1
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
+
+	if direction.y < 0:
+		sprite.play("WalkUp")
+	elif direction.y > 0:
+		sprite.play("WalkDown")
+	elif direction.x < 0:
+		sprite.play("WalkLeft")
+	elif direction.x > 0:
+		sprite.play("WalkRight")
+	else:
+		sprite.stop()
+
 	return direction
 
 

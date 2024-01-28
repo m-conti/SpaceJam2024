@@ -90,9 +90,13 @@ func generate_chunck_around(chunck: Vector2i):
 
 	for chunck_x in range(chunck.x - 2, chunck.x + 2):
 		for chunck_y in range(chunck.y - 2, chunck.y + 2):
+			var chunck_ := Vector2i(chunck_x, chunck_y)
+			if chunck_generated.has(chunck_):
+				continue
+			
 			for x in range(background_generator.chunck_size.x):
 				for y in range(background_generator.chunck_size.y):
-					var cell := Vector2i(x, y) + Vector2i(chunck_x, chunck_y) * background_generator.chunck_size
+					var cell := Vector2i(x, y) + chunck_ * background_generator.chunck_size
 		
 					set_cell(BACKGROUND_LAYER, cell, 0, background_generator.grass_cells.pick_random())
 
