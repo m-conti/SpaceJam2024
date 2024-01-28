@@ -48,6 +48,8 @@ func setTarget(body: CharacterBody2D):
 func change_looking_direction():
 	if target or targetMode == ETargetMode.WANDER:
 		vision.look_at(target_pos)
+	if targetMode == ETargetMode.WANDER:
+		vision.rotate(PI)
 
 
 func change_target_mode():
