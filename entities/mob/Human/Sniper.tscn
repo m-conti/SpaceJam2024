@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ha2ckbqqupmh"]
+
+[ext_resource type="PackedScene" uid="uid://r0b6k06s2nkm" path="res://entities/mob/Human/Hunter.tscn" id="1_dg8hl"]
+
+[node name="Hunter" instance=ExtResource("1_dg8hl")]

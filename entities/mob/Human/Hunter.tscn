@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dioyvpfc1cdvf" path="res://entities/mob/Human.tscn" id="1_anadw"]
 [ext_resource type="PackedScene" uid="uid://ctrrghb7v7ftn" path="res://weapon/gun.tscn" id="2_1b7kf"]
-[ext_resource type="Script" path="res://entities/mob/Hunter.gd" id="2_rmmpq"]
+[ext_resource type="Script" path="res://entities/mob/Human/Hunter.gd" id="2_rmmpq"]
 
 [node name="Hunter" instance=ExtResource("1_anadw")]
 script = ExtResource("2_rmmpq")
