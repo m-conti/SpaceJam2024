@@ -37,4 +37,7 @@ func _on_death():
 	Game.zombie_count_changed.emit(Game.zombieNumber)
 
 func attack(body):
+	if not body is Entity:
+		return
+	
 	body.attacked.emit()

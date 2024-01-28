@@ -21,8 +21,8 @@ func _on_timeout():
 
 func shoot():
 	var bullet: Bullet = bullet_scene.instantiate()
-	entity.add_child(bullet)
+	get_tree().root.add_child(bullet)
 
 	bullet.speed = bullet_speed
-	bullet.global_rotation = global_rotation
+	bullet.direction_angle = global_rotation
 	bullet.global_position = global_position

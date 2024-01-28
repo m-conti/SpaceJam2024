@@ -45,9 +45,11 @@ func _on_death():
 	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 
 
-func toggleRun(value: bool):
-	isRunning = value
+func toggleRun(value: bool) -> bool:
+	if not super.toggleRun(value):
+		return false
 	set_collision_layer_value(5, value)
+	return true
 
 
 func generate_chuncks():
@@ -84,7 +86,7 @@ func get_direction():
 
 
 func attack():
-	var bodies = (%AttackArea as Area2D).get_overlapping_bodies()
+	var bodies = (%AttackArea as Area2D).get_overlapping_bodies().filter(func(body): return body is Entity)
 	if bodies.size() == 0: return
 	var to_kill = bodies[0]
 	to_kill.attacked.emit()

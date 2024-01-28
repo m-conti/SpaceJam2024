@@ -95,7 +95,7 @@ func _physics_process(delta: float):
 		stamina = clamp(stamina + staminaRecorvery * delta, 0.0, max_stamina)
 
 
-func _process(delta: float): pass
+func _process(_delta: float): pass
 
 
 func toggleRun(value: bool) -> bool:

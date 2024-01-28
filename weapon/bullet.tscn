@@ -13,7 +13,7 @@ width = 1
 [node name="Bullet" type="Area2D"]
 collision_mask = 4
 script = ExtResource("1_ckc3s")
-speed = 200.0
+speed = 20.0
 life_span = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

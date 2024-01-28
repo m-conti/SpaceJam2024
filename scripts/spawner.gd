@@ -3,7 +3,7 @@ extends Timer
 
 
 var entity_to_spawn := {
-	preload("res://entities/mob/Human.tscn"): 1.0,
+	preload("res://entities/mob/FearHuman.tscn"): 1.0,
 	preload("res://entities/mob/Hunter.tscn"): 1.0,
 }
 
