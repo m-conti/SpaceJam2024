@@ -8,15 +8,15 @@ static var current_count: int = 0
 
 
 func _activate():
-	PowerSpeed.current_count += 1
-	super._activate()
+    PowerSpeed.current_count += 1
+    super._activate()
 
 
 static func get_description() -> String:
     return "Makes your zombies faster."
 
 static func get_display_name() -> String:
-	return "Speed"
+    return "Speed"
 
 func _activate_on_zombie(zombie: Zombie):
     zombie.walkSpeed *= speed_factor

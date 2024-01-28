@@ -12,11 +12,11 @@ static func get_description() -> String:
 
 
 static func get_display_name() -> String:
-	return "Super Zombies"
+    return "Super Zombies"
 
 func _activate():
-	PowerSuper.current_count += 1
-	super._activate()
+    PowerSuper.current_count += 1
+    super._activate()
 
 
 func _activate_on_zombie(zombie: Zombie):
