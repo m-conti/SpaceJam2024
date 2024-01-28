@@ -9,6 +9,7 @@ const zombie_scene: PackedScene = preload("res://entities/mob/Zombie.tscn")
 
 @onready var vision: Area2D = %Vision
 @onready var hearing: Area2D = %Hearing
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 
 static func get_entity_group():
@@ -41,6 +42,7 @@ func hearSomathing(body: CharacterBody2D):
 func setTarget(body: CharacterBody2D):
 	if not target:
 		target = body
+		animation_player.play("Aware")
 	elif body.position.distance_to(position) < target_pos.distance_to(position):
 		target = body
 
