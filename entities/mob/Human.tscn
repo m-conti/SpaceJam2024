@@ -94,6 +94,7 @@ unique_name_in_owner = true
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision"]
+visible = false
 polygon = PackedVector2Array(100, -100, 100, 100, 0, 0)
 
 [node name="Hearing" type="Area2D" parent="."]
