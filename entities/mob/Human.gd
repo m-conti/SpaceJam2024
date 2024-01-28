@@ -1,37 +1,29 @@
 extends Mob
 class_name Human
 
-enum EHumanType {
-	FEARLESS,
-	FEARFUL,
-	AGGRESSIVE,
-	DEFENSIVE,
-	NEUTRAL
-}
 
 signal attacked
 
-@export var _humanType: EHumanType = EHumanType.NEUTRAL
 @export var zombie_scene: PackedScene
 @export var score: int = 1
+
+@onready var vision: Area2D = %Vision
+@onready var hearing: Area2D = %Hearing
 
 
 func _ready():
 	super._ready()
-	(%Vision as Area2D).body_entered.connect(seeSomething)
-	(%Hearing as Area2D).body_entered.connect(hearSomathing)
+	vision.body_entered.connect(seeSomething)
+	hearing.body_entered.connect(hearSomathing)
 	attacked.connect(_on_attacked)
 
 
 func _process(delta):
 	super._process(delta)
-	toggleRunByHumanType()
 
-
-func _physics_process(delta):
-	super._physics_process(delta)
-	if target or targetMode == ETargetMode.WANDER:
-		changeLookAtByHumanType()
+	change_run_type()
+	change_target_mode()
+	change_looking_direction()
 
 
 func seeSomething(body: CharacterBody2D):
@@ -47,43 +39,20 @@ func setTarget(body: CharacterBody2D):
 		target = body
 	elif body.position.distance_to(position) < target_pos.distance_to(position):
 		target = body
-	if target == body:
-		changeTargetModByHumanType()
 
 
-func changeLookAtByHumanType():
-	if _humanType == EHumanType.FEARLESS:
-		(%Vision).look_at(target_pos)
-	elif _humanType == EHumanType.FEARFUL:
-		(%Vision).look_at(target_pos)
-		(%Vision as Area2D).rotate(PI)
-	elif _humanType == EHumanType.AGGRESSIVE:
-		(%Vision).look_at(target_pos)
-	elif _humanType == EHumanType.DEFENSIVE:
-		(%Vision).look_at(target_pos)
-	elif _humanType == EHumanType.NEUTRAL:
-		(%Vision).look_at(target_pos)
-		(%Vision as Area2D).rotate(PI)
+func change_looking_direction():
+	if target or targetMode == ETargetMode.WANDER:
+		vision.look_at(target_pos)
 
-func toggleRunByHumanType():
-	if _humanType == EHumanType.FEARFUL:
-		if target:
-			toggleRun(true)
-	elif _humanType == EHumanType.AGGRESSIVE:
-		if target:
-			toggleRun(true)
 
-func changeTargetModByHumanType():
-	if _humanType == EHumanType.FEARLESS:
-		targetMode = ETargetMode.ATTACK
-	elif _humanType == EHumanType.FEARFUL:
-		targetMode = ETargetMode.FLEE
-	elif _humanType == EHumanType.AGGRESSIVE:
-		targetMode = ETargetMode.ATTACK
-	elif _humanType == EHumanType.DEFENSIVE:
-		targetMode = ETargetMode.FLEE
-	elif _humanType == EHumanType.NEUTRAL:
-		targetMode = ETargetMode.FLEE
+func change_target_mode():
+	targetMode = ETargetMode.FLEE
+
+
+func change_run_type():
+	if target:
+		toggleRun(true)
 
 
 func die():
@@ -99,7 +68,7 @@ func die():
 
 	zombie.position = position
 	zombie.global_scale = global_scale
-	
+
 	Game.player.spawn_zombie.emit(zombie)
 	Game.zombie_count_changed.emit(Game.zombieNumber)
 

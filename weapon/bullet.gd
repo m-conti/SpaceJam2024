@@ -9,8 +9,11 @@ extends Area2D
 @onready var timer: Timer = %Timer
 
 
+var direction_angle: float = 0.0
+
+
 func _physics_process(delta):
-	position.x += speed * delta
+	position += Vector2(speed * delta, 0).rotated(direction_angle)
 
 
 func _on_body_entered(body: Node2D):

@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://r0b6k06s2nkm"]
+[gd_scene load_steps=4 format=3 uid="uid://r0b6k06s2nkm"]
 
 [ext_resource type="PackedScene" uid="uid://dioyvpfc1cdvf" path="res://entities/mob/Human.tscn" id="1_anadw"]
 [ext_resource type="PackedScene" uid="uid://ctrrghb7v7ftn" path="res://weapon/gun.tscn" id="2_1b7kf"]
+[ext_resource type="Script" path="res://entities/mob/Hunter.gd" id="2_rmmpq"]
 
 [node name="Hunter" instance=ExtResource("1_anadw")]
-_humanType = 2
+script = ExtResource("2_rmmpq")
+attack_range = 100.0
 score = 5
-walkSpeed = 2000.0
+walkSpeed = 1000.0
+runSpeed = 3000.0
 
 [node name="Gun" parent="Vision" index="1" instance=ExtResource("2_1b7kf")]
-bullet_speed = 300.0
+bullet_speed = 200.0
