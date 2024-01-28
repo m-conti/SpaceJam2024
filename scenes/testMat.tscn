@@ -11,7 +11,13 @@ script = ExtResource("1_cimbo")
 
 [node name="Character" parent="." instance=ExtResource("2_wyg1e")]
 position = Vector2(335, 145)
-max_life = 1.0
+attack_speed = null
+staminaRecorvery = null
+walkSpeed = null
+runSpeed = null
+max_life = null
+max_stamina = null
+min_stamina = null
 
 [node name="Human" parent="." instance=ExtResource("3_o67sh")]
 position = Vector2(536, 187)

@@ -10,24 +10,6 @@ signal upload_score_completed(value: Dictionary)
 signal get_leadboard_completed(value: Dictionary)
 
 
-func _process(_delta):
-	if(Input.is_action_just_pressed("ui_up")):
-		score += 1
-		print("CurrentScore:"+str(score))
-	
-	if(Input.is_action_just_pressed("ui_down")):
-		score -= 1
-		print("CurrentScore:"+str(score))
-	
-	# Upload score when pressing enter
-	if(Input.is_action_just_pressed("ui_accept")):
-		_upload_score(score)
-	
-	# Get score when pressing spacebar
-	if(Input.is_action_just_pressed("ui_select")):
-		_get_leaderboards()
-
-
 func _get_leaderboards() -> Dictionary:
 	print("Getting leaderboards")
 	var url = "https://api.lootlocker.io/game/leaderboards/" + Credentials.LEADERBOARD_KEY + "/list?count=10"
