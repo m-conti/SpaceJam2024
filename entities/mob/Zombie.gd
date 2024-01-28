@@ -4,6 +4,10 @@ class_name Zombie
 @onready var player = get_parent().get_node("%Player")
 
 
+static func get_entity_group():
+	return "zombie"
+
+
 func _ready():
 	super._ready()
 	(%Vision as Area2D).body_entered.connect(seeSomething)

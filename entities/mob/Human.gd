@@ -11,6 +11,10 @@ signal attacked
 @onready var hearing: Area2D = %Hearing
 
 
+static func get_entity_group():
+	return "human"
+
+
 func _ready():
 	super._ready()
 	vision.body_entered.connect(seeSomething)
