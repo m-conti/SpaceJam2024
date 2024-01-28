@@ -34,7 +34,6 @@ func create_houses(chunck: Vector2i) -> Array:
 func generate_chunck(chunck: Vector2i) -> void:
 	if map.chunck_generated.has(chunck):
 		return
-	
 	map.chunck_generated.add(chunck)
 
 	var entrances: Array = create_houses(chunck)
@@ -44,13 +43,9 @@ func generate_chunck(chunck: Vector2i) -> void:
 	for edge in tree:
 		var path: Array = Graph.a_star(map, edge.u, edge.v)
 		map.set_cells_terrain_path(map.TERRAIN_LAYER, path, 0, 0)
-	
-	var used_cell: Set = Set.from(map.get_used_cells(map.TERRAIN_LAYER))
 
 	for x in range(chunck_size.x):
 		for y in range(chunck_size.y):
 			var cell := Vector2i(x, y) + chunck * chunck_size
-			if used_cell.has(cell):
-				continue
 			
-			map.set_cell(map.TERRAIN_LAYER, cell, 1, grass_cells.pick_random())
+			map.set_cell(map.BACKGROUND_LAYER, cell, 1, grass_cells.pick_random())
