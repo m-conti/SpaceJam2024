@@ -522,7 +522,13 @@ chunck_size = Vector2i(20, 20)
 [node name="Player" parent="." instance=ExtResource("4_v3wbp")]
 unique_name_in_owner = true
 position = Vector2(1675, 725)
-max_life = 1.0
+attack_speed = null
+staminaRecorvery = null
+walkSpeed = null
+runSpeed = null
+max_life = null
+max_stamina = null
+min_stamina = null
 
 [node name="Human" parent="." instance=ExtResource("5_i8h8m")]
 position = Vector2(2680, 935)

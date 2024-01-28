@@ -2626,12 +2626,7 @@ unique_name_in_owner = true
 position = Vector2(10, 10)
 scale = Vector2(2, 2)
 wall_min_slide_angle = 0.0
-attack_speed = 0.5
-staminaRecorvery = 1.0
 walkSpeed = 10000.0
-runSpeed = 16000.0
-max_stamina = 10.0
-min_stamina = 4.0
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
