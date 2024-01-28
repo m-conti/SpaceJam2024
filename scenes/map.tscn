@@ -1406,10 +1406,10 @@ chunck_size = Vector2i(20, 20)
 grass_cells = Array[Vector2i]([Vector2i(0, 0)])
 
 [node name="Spawner" type="Timer" parent="Map"]
-wait_time = 4.0
+wait_time = 3.0
 autostart = true
 script = ExtResource("4_h4lx8")
-spawn_count = Vector2i(1, 5)
+spawn_count = Vector2i(2, 5)
 min_spawn_dist = 30.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Map"]
@@ -1421,6 +1421,5 @@ position = Vector2(10, 10)
 scale = Vector2(2, 2)
 wall_min_slide_angle = 0.0
 walkSpeed = 10000.0
-max_life = 1.0
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]
