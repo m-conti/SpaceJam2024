@@ -53,4 +53,4 @@ func generate_chunck(chunck: Vector2i) -> void:
 			if used_cell.has(cell):
 				continue
 			
-			# map.set_cell(map.TERRAIN_LAYER, cell, 1, grass_cells.pick_random())
+			# map.set_cell(map.TERRAIN_LAYER, cell, 0, grass_cells.pick_random())

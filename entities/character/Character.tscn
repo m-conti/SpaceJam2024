@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://da3uspmrjxjl"]
+[gd_scene load_steps=19 format=3 uid="uid://da3uspmrjxjl"]
 
 [ext_resource type="Script" path="res://entities/character/Character.gd" id="1_oef5v"]
 [ext_resource type="Texture2D" uid="uid://c1xwku6l1dced" path="res://assets/sprites/Zombie3.png" id="2_gk2cc"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://UI/zombie.gd" id="4_lr0uq"]
 [ext_resource type="Script" path="res://UI/xp.gd" id="5_j1jo7"]
 [ext_resource type="Script" path="res://UI/lvl.gd" id="6_of7a4"]
-[ext_resource type="Texture2D" uid="uid://c8wn0ov3d18ya" path="res://assets/LightSprite.png" id="7_f8mhh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igy0t"]
 
@@ -169,13 +168,5 @@ offset_top = -18.9
 offset_right = 11.1
 offset_bottom = -14.9
 show_percentage = false
-
-[node name="Lights" type="Node2D" parent="."]
-
-[node name="LightAdd" type="PointLight2D" parent="Lights"]
-energy = 0.5
-shadow_enabled = true
-texture = ExtResource("7_f8mhh")
-texture_scale = 0.4
 
 [connection signal="score_changed" from="." to="GUI/PanelContainer/MarginContainer/VBoxContainer/Score" method="_on_character_score_changed"]
