@@ -13,3 +13,8 @@ func _ready():
 	var board = await _get_leaderboards()
 	for item in board.items:
 		addScoreLine(item)
+
+
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	pass # Replace with function body.
