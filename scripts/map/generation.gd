@@ -48,4 +48,4 @@ func generate_chunck(chunck: Vector2i) -> void:
 		for y in range(chunck_size.y):
 			var cell := Vector2i(x, y) + chunck * chunck_size
 			
-			map.set_cell(map.BACKGROUND_LAYER, cell, 1, grass_cells.pick_random())
+			map.set_cell(map.BACKGROUND_LAYER, cell, 1, Vector2i.ZERO)

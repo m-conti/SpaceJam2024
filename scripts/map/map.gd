@@ -88,8 +88,6 @@ func get_cell(pos: Vector2i):
 func generate_chunck_around(chunck: Vector2i):
 	thread.wait_to_finish()
 
-	thread = Thread.new()
-
 	thread.start(func():
 		for x in range(chunck.x - 2, chunck.x + 2):
 			for y in range(chunck.y - 2, chunck.y + 2):
