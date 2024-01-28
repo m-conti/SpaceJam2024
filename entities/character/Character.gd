@@ -104,6 +104,10 @@ func askToAttack():
 		attackTimer.timeout.connect(askToAttack)
 
 func onCommand():
+	var oldCommand = get_tree().get_first_node_in_group("command")
+	if oldCommand and oldCommand.isFocused:
+		oldCommand.action()
+		return
 	var command = FlagCommand.instantiate()
 	command.position = get_global_mouse_position()
 	get_parent().add_child(command)
