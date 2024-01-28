@@ -85,6 +85,7 @@ collision_layer = 5
 motion_mode = 1
 wall_min_slide_angle = 3.14159
 script = ExtResource("1_oef5v")
+max_life = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_igy0t")

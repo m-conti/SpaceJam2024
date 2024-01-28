@@ -4,7 +4,6 @@
 
 [node name="Hunter" instance=ExtResource("1_dg8hl")]
 attack_range = 600.0
-score = 8
 wander_refresh_time = 4.0
 walkSpeed = 50.0
 runSpeed = 1000.0

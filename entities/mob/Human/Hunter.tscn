@@ -7,7 +7,6 @@
 [node name="Hunter" instance=ExtResource("1_c3o4i")]
 script = ExtResource("2_gcixf")
 attack_range = 100.0
-score = 5
 walkSpeed = 1000.0
 runSpeed = 3000.0
 
