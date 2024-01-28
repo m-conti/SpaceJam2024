@@ -53,11 +53,11 @@ func get_random_direction():
 		func(e: Node2D):
 			return e != self and e.global_position.distance_to(global_position) < group_up_distance
 	)
-	var barycentre: Vector2 = close_entities.reduce(
+	var barycentre: Vector2 = (close_entities.reduce(
 		func(acc: Vector2, e: Node2D):
 			return acc + e.global_position,
 		Vector2.ZERO
-	) / close_entities.size()
+	) / close_entities.size()) if close_entities.size() > 0 else global_position
 
 	var angle = randf_range(0.0, TAU)
 	return 20.0*Vector2(cos(angle), sin(angle)) + barycentre - global_position
