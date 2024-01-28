@@ -98,13 +98,14 @@ collision_mask = 4
 polygon = PackedVector2Array(100, -100, 100, 100, 0, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="Vision"]
-position = Vector2(85, 5)
+position = Vector2(2.08165e-12, 2.08165e-12)
 rotation = -0.785398
 scale = Vector2(0.5, 0.5)
 color = Color(1, 0, 0, 1)
 energy = 0.4
 shadow_enabled = true
 texture = ExtResource("5_77416")
+offset = Vector2(100, 100)
 
 [node name="Hearing" type="Area2D" parent="."]
 unique_name_in_owner = true

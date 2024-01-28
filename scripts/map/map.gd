@@ -1,15 +1,14 @@
 extends TileMap
 class_name Map
 
-const RIGID_LAYER = 0
+const RIGID_LAYER = 2
 const TERRAIN_LAYER = 1
+const BACKGROUND_LAYER = 0
 
 var last_mouse_map_pos = null
 var cells := {}
 var chunck_generated := Set.new()
-var thread: Thread
-
-@export var size := Vector2i(100, 100)
+var thread: Thread = Thread.new()
 
 @onready var background_generator: BackgroundGenerator = $BackgroundGenerator
 
@@ -70,10 +69,6 @@ func can_move_path(path: Array) -> bool:
 	return true
 
 
-func get_cell_attrs(layer: int, pos: Vector2i) -> Vector4i:
-	return Vector4i(get_cell_source_id(layer, pos), pos.x, pos.y, get_cell_alternative_tile(layer, pos))
-
-
 func get_cell_attrs_from_pattern(pattern: TileMapPattern, cell_pos_in_pattern: Vector2i) -> Vector4i:
 	var atlas_pos: Vector2i = pattern.get_cell_atlas_coords(cell_pos_in_pattern)
 	return Vector4i(pattern.get_cell_source_id(cell_pos_in_pattern), atlas_pos.x, atlas_pos.y, pattern.get_cell_alternative_tile(cell_pos_in_pattern))
@@ -91,6 +86,8 @@ func get_cell(pos: Vector2i):
 
 
 func generate_chunck_around(chunck: Vector2i):
+	thread.wait_to_finish()
+
 	thread = Thread.new()
 
 	thread.start(func():
