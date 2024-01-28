@@ -78,9 +78,6 @@ font_size = 20
 outline_size = 4
 outline_color = Color(1, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_7g5r2"]
-resource_name = "Moving"
-
 [sub_resource type="Animation" id="Animation_vau55"]
 resource_name = "Aware"
 tracks/0/type = "value"
@@ -119,6 +116,9 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+
+[sub_resource type="Animation" id="Animation_7g5r2"]
+resource_name = "Moving"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_btp5w"]
 _data = {
