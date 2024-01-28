@@ -10,7 +10,7 @@ enum ETargetMode {
 
 @export var wander_refresh_time: float = 1.0
 @export var dispawn_distance: float = 1000.0
-@export var group_up_distance: float = 100.0
+@export var group_up_distance: float = 200.0
 
 var wander_direction := Vector2.ZERO
 var target_pos: Vector2:

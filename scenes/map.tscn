@@ -1383,8 +1383,11 @@ nb_houses_per_chunck = Vector2i(10, 20)
 chunck_size = Vector2i(20, 20)
 
 [node name="Spawner" type="Timer" parent="Map"]
+wait_time = 4.0
 autostart = true
 script = ExtResource("4_h4lx8")
+spawn_count = Vector2i(1, 5)
+min_spawn_dist = 30.0
 
 [node name="Player" parent="." instance=ExtResource("6_vbuwl")]
 unique_name_in_owner = true

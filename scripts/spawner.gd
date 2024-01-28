@@ -10,6 +10,7 @@ var entity_to_spawn := {
 @export var spawn_count := Vector2i(1, 10)
 @export var min_spawn_dist: float = 20.0
 @export var max_spawn_dist: float = 50.0
+@export var human_cap: int = 30
 
 @export var spawn_range: float = 10.0
 
@@ -31,6 +32,9 @@ func get_entity_to_spawn() -> PackedScene:
 
 
 func _on_timeout() -> void:
+	if get_tree().get_nodes_in_group("human").size() > human_cap:
+		return
+
 	spawn_around(%Player)
 
 
