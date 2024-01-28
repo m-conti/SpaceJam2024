@@ -4,7 +4,7 @@ class_name Human
 
 signal attacked
 
-@export var zombie_scene: PackedScene
+const zombie_scene: PackedScene = preload("res://entities/mob/Zombie.tscn")
 @export var score: float = 1.0
 
 @onready var vision: Area2D = %Vision
