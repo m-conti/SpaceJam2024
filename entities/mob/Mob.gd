@@ -10,6 +10,7 @@ enum ETargetMode {
 
 @export var wander_refresh_time: float = 1.0
 @export var dispawn_distance: float = 1000.0
+@export var group_up_distance: float = 100.0
 
 var wander_direction := Vector2.ZERO
 var target_pos: Vector2:
@@ -39,10 +40,27 @@ var targetMode: ETargetMode = ETargetMode.WANDER:
 			wander_timer.queue_free()
 			wander_timer = null
 
+var entity_group: String:
+	get = get_entity_group
+
+
+static func get_entity_group():
+	return "mob"
+
 
 func get_random_direction():
+	var close_entities: Array = get_tree().get_nodes_in_group(entity_group).filter(
+		func(e: Node2D):
+			return e != self and e.global_position.distance_to(global_position) < group_up_distance
+	)
+	var barycentre: Vector2 = close_entities.reduce(
+		func(acc: Vector2, e: Node2D):
+			return acc + e.global_position,
+		Vector2.ZERO
+	)
+
 	var angle = randf_range(0.0, TAU)
-	return Vector2(cos(angle), sin(angle))
+	return 20.0*Vector2(cos(angle), sin(angle)) + barycentre - global_position
 
 
 func create_wander_timer():
