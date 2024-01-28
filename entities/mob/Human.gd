@@ -5,7 +5,7 @@ class_name Human
 signal attacked
 
 @export var zombie_scene: PackedScene
-var score: int:
+static var score: int:
 	get = get_score
 
 @onready var vision: Area2D = %Vision

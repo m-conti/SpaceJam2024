@@ -48,6 +48,14 @@ static func get_entity_group():
 	return "mob"
 
 
+func upgrade(difficulty: float):
+	var factor: float = 1.0 + difficulty
+
+	speed *= factor
+	max_life *= factor
+	life *= factor
+
+
 func get_random_direction():
 	var close_entities: Array = get_tree().get_nodes_in_group(entity_group).filter(
 		func(e: Node2D):
