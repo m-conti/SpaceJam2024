@@ -4,7 +4,7 @@ extends Area2D
 
 @export var speed: float = 400.0
 @export var life_span: float = 2.0
-@export var damage: int = 1
+@export var damage: float = 1.5
 
 @onready var timer: Timer = %Timer
 

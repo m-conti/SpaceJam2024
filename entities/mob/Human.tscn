@@ -76,6 +76,7 @@ radius = 120.0
 [sub_resource type="AudioStream" id="AudioStream_415w5"]
 
 [node name="Human" type="CharacterBody2D" groups=["human"]]
+scale = Vector2(1.5, 1.5)
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_5qxiv")
@@ -95,12 +96,12 @@ unique_name_in_owner = true
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision"]
-polygon = PackedVector2Array(100, -100, 100, 100, 0, 0)
+polygon = PackedVector2Array(150, -150, 150, 150, 0, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="Vision"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 rotation = -0.785398
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 color = Color(1, 0, 0, 0.588235)
 energy = 0.4
 shadow_enabled = true

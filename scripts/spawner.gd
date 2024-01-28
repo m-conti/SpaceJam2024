@@ -6,6 +6,7 @@ const entity_to_spawn := [
 	preload("res://entities/mob/Human/FearHuman.tscn"),
 	preload("res://entities/mob/Human/Hunter.tscn"),
 	preload("res://entities/mob/Human/Sniper.tscn"),
+	preload("res://entities/mob/Human/Commando.tscn"),
 ]
 
 @export var spawn_count := Vector2i(1, 10)

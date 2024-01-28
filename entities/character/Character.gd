@@ -29,9 +29,12 @@ func _ready():
 	self.add_child(attackTimer)
 	attackTimer.wait_time = 1 / attack_speed
 	attackTimer.one_shot = true
-
+	score_changed.connect(_on_change_score)
 	generate_chuncks()
 
+func _on_change_score(score):
+	print("CHANGE PITCH", 1 + score / 100)
+	(get_parent().get_node("Music") as AudioStreamPlayer).pitch_scale = 1 + float(score) / 5000
 
 func _input(event):
 	if event.is_action_pressed("run"):
@@ -41,7 +44,7 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 		askToAttack()
 	if event.is_action_pressed("command"):
-		onCommand()
+		onCommand(event)
 
 
 func _on_death():
@@ -105,9 +108,9 @@ func askToAttack():
 	elif not attackTimer.timeout.is_connected(askToAttack):
 		attackTimer.timeout.connect(askToAttack)
 
-func onCommand():
+func onCommand(event: InputEventMouseButton):
 	var oldCommand = get_tree().get_first_node_in_group("command")
-	if oldCommand and oldCommand.isFocused:
+	if oldCommand and (oldCommand.isFocused or event.double_click):
 		oldCommand.action()
 		return
 	var command = FlagCommand.instantiate()

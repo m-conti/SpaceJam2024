@@ -1,9 +1,10 @@
-[gd_scene load_steps=61 format=3 uid="uid://rulg1r7sntw4"]
+[gd_scene load_steps=62 format=3 uid="uid://rulg1r7sntw4"]
 
 [ext_resource type="Script" path="res://scripts/map/map.gd" id="1_7xh8i"]
 [ext_resource type="Texture2D" uid="uid://b2amivhenmif7" path="res://assets/Zombie Apocalypse Tileset.png" id="1_pk76x"]
 [ext_resource type="Script" path="res://scripts/map/generation.gd" id="2_he6y0"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_h4lx8"]
+[ext_resource type="AudioStream" uid="uid://bpd50ood5g8nq" path="res://assets/musics/zombie-15157.mp3" id="6_qct7t"]
 [ext_resource type="PackedScene" uid="uid://da3uspmrjxjl" path="res://entities/character/Character.tscn" id="6_vbuwl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_6uamg"]
@@ -2556,5 +2557,11 @@ position = Vector2(10, 10)
 scale = Vector2(2, 2)
 wall_min_slide_angle = 0.0
 walkSpeed = 10000.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_qct7t")
+volume_db = -30.0
+autoplay = true
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]
