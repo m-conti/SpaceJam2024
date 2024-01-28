@@ -23,6 +23,8 @@ func _process(delta):
 		toggleRun(true)
 
 func seeSomething(body):
+	if not body is Entity:
+		return
 	if target == null or target == player:
 		target = body
 	elif body.position.distance_to(position) < target_pos.distance_to(position):
