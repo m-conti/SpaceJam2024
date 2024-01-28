@@ -3,17 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://r0b6k06s2nkm" path="res://entities/mob/Human/Hunter.tscn" id="1_dg8hl"]
 
 [node name="Sniper" instance=ExtResource("1_dg8hl")]
-scale = Vector2(1, 1)
 attack_range = 800.0
 wander_refresh_time = 4.0
 walkSpeed = 50.0
 runSpeed = 1000.0
 
 [node name="Vision" parent="." index="2"]
-scale = Vector2(10, 2)
-
-[node name="CollisionPolygon2D" parent="Vision" index="0"]
-polygon = PackedVector2Array(100, -100, 100, 100, 0, 0)
+scale = Vector2(7, 1.5)
 
 [node name="Gun" parent="Vision" index="1"]
 bullet_speed = 600.0
