@@ -80,7 +80,7 @@ scale = Vector2(20, 20)
 collision_layer = 5
 script = ExtResource("1_ir1pe")
 walkSpeed = 4000.0
-runSpeed = 6000.0
+runSpeed = 8000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xe1j")

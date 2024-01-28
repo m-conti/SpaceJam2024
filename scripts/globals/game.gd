@@ -19,7 +19,7 @@ signal zombie_count_changed(count: int)
 signal xp_changed
 signal lvl_changed
 
-const curve_xp_height = 10
+const curve_xp_height = 1
 const curve_xp_width = 0.4
 
 func addXp(value: float):
