@@ -2623,7 +2623,7 @@ color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="Player" parent="." instance=ExtResource("6_vbuwl")]
 unique_name_in_owner = true
-position = Vector2(10, 10)
+position = Vector2(128, 128)
 scale = Vector2(2, 2)
 wall_min_slide_angle = 0.0
 walkSpeed = 10000.0

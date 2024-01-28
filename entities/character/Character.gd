@@ -20,6 +20,7 @@ var score: int = 0:
 
 @onready var attackTimer: Timer = Timer.new()
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+var last_direction_anim: String = "Down"
 
 var last_chunck
 @onready var sprite: AnimatedSprite2D = %Sprite
@@ -84,8 +85,6 @@ func generate_chuncks():
 	map.generate_chunck_around(chunck)
 
 
-
-
 func _physics_process(delta):
 	super._physics_process(delta)
 
@@ -106,16 +105,20 @@ func get_direction():
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
 
-	if direction.y < 0:
-		sprite.play("WalkUp")
-	elif direction.y > 0:
-		sprite.play("WalkDown")
-	elif direction.x < 0:
-		sprite.play("WalkLeft")
-	elif direction.x > 0:
-		sprite.play("WalkRight")
+	var direction_anim: String = ""
+	if direction.y < -0.1:
+		direction_anim = "Up"
+	elif direction.y > 0.1:
+		direction_anim = "Down"
+	elif abs(direction.x) > 0.1:
+		direction_anim = "Side"
 	else:
-		sprite.stop()
+		sprite.play("Idle" + last_direction_anim)
+		return direction
+	
+	last_direction_anim = direction_anim
+	sprite.play("Walk" + direction_anim)
+	sprite.flip_h = direction.x > 0
 
 	return direction
 
@@ -129,7 +132,8 @@ func attack():
 
 func askToAttack():
 	if attackTimer.is_stopped():
-		attackTimer.timeout.disconnect(askToAttack)
+		if attackTimer.timeout.is_connected(askToAttack):
+			attackTimer.timeout.disconnect(askToAttack)
 		attackTimer.start(attack_speed)
 		attack()
 	elif not attackTimer.timeout.is_connected(askToAttack):

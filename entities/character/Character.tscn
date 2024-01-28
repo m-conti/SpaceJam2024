@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://da3uspmrjxjl"]
+[gd_scene load_steps=13 format=3 uid="uid://da3uspmrjxjl"]
 
 [ext_resource type="Script" path="res://entities/character/Character.gd" id="1_oef5v"]
-[ext_resource type="Texture2D" uid="uid://dw4f56gog0ol5" path="res://assets/Zombie.png" id="2_hueyh"]
+[ext_resource type="SpriteFrames" uid="uid://pv47dgw21mgw" path="res://entities/mob/Anim/Player.tres" id="2_wpwxy"]
 [ext_resource type="Script" path="res://UI/score.gd" id="3_jbani"]
 [ext_resource type="Script" path="res://UI/zombie.gd" id="4_lr0uq"]
 [ext_resource type="Script" path="res://UI/xp.gd" id="5_j1jo7"]
@@ -11,113 +11,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_igy0t"]
 radius = 8.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2crcf"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5sqc"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mwdy"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tw4fb"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7g4h"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gan68"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(160, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fubs8"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yd77g"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rid7b"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(160, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uaxps"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmbk8"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(128, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_82wfu"]
-atlas = ExtResource("2_hueyh")
-region = Rect2(160, 96, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7753s"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2crcf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i5sqc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3mwdy")
-}],
-"loop": false,
-"name": &"WalkDown",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tw4fb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x7g4h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gan68")
-}],
-"loop": true,
-"name": &"WalkLeft",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fubs8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yd77g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rid7b")
-}],
-"loop": true,
-"name": &"WalkRight",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uaxps")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tmbk8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_82wfu")
-}],
-"loop": true,
-"name": &"WalkUp",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_45ndk"]
 radius = 30.0
 
@@ -126,7 +19,7 @@ font_size = 30
 
 [sub_resource type="Animation" id="Animation_66cp1"]
 resource_name = "Hit"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -134,10 +27,10 @@ tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(3, 2, 2, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(10, 2, 2, 1), Color(0.556863, 1, 0.384314, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s4v4x"]
@@ -157,9 +50,11 @@ shape = SubResource("CircleShape2D_igy0t")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_7753s")
-animation = &"WalkLeft"
-autoplay = "WalkDown"
+modulate = Color(0.556863, 1, 0.384314, 1)
+self_modulate = Color(0.556863, 1, 0.384314, 1)
+sprite_frames = ExtResource("2_wpwxy")
+animation = &"IdleDown"
+autoplay = "IdleDown"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -222,18 +117,18 @@ script = ExtResource("6_of7a4")
 unique_name_in_owner = true
 self_modulate = Color(0, 1, 0, 1)
 offset_left = -11.0
-offset_top = -20.0
+offset_top = -23.0
 offset_right = 11.0
-offset_bottom = -16.0
+offset_bottom = -19.0
 show_percentage = false
 
 [node name="LifeProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 offset_left = -10.9
-offset_top = -25.0
+offset_top = -28.0
 offset_right = 11.1
-offset_bottom = -21.0
+offset_bottom = -24.0
 show_percentage = false
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
