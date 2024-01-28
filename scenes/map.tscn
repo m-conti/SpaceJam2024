@@ -1421,6 +1421,6 @@ position = Vector2(10, 10)
 scale = Vector2(2, 2)
 wall_min_slide_angle = 0.0
 walkSpeed = 10000.0
-max_life = 10
+max_life = 1.0
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]
