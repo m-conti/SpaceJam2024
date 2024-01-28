@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var lifeTimer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,3 +11,12 @@ func _ready():
 	var zombies = get_tree().get_nodes_in_group("zombie")
 	for zombie in zombies:
 		(zombie as Zombie).command(self)
+	
+	lifeTimer.autostart = true
+	lifeTimer.one_shot = true
+	lifeTimer.wait_time = 6.0
+	lifeTimer.timeout.connect(death)
+	add_child(lifeTimer)
+
+func death():
+	queue_free()

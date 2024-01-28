@@ -92,6 +92,7 @@ shape = SubResource("CircleShape2D_igy0t")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_7753s")
+autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

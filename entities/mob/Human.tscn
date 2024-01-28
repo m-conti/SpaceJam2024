@@ -88,6 +88,7 @@ shape = SubResource("CircleShape2D_2xe1j")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ssomn")
+autoplay = "default"
 
 [node name="Vision" type="Area2D" parent="."]
 unique_name_in_owner = true
