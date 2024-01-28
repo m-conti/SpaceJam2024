@@ -65,6 +65,7 @@ func _input(event):
 
 func _on_death():
 	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+	Game.score = score
 
 
 func toggleRun(value: bool) -> bool:

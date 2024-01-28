@@ -1,14 +1,25 @@
 extends Leaderboard
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var new_score: int = Game.score
+	Game.score = 0
+
+	_upload_score(new_score)
+	%Score.text = "Score : " + str(new_score)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func retry():
+	get_tree().change_scene_to_file("res://Scenes/map.tscn")
 
-func setPlayerScore(score):
-	_upload_score(score)
+
+func leaderboard():
+	self.visible = false
+	Game.back_scene = self
+
+	var _leaderboard: Leaderboard = load("res://UI/leaderBoard/leaderboard.tscn").instantiate()
+	add_child(_leaderboard)
+
+
+func quit():
+	get_tree().quit()

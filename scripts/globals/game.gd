@@ -5,11 +5,13 @@ var lvlUpScene: PackedScene = preload("res://UI/powerSelection/PowerSelection.ts
 var player: Player
 var map: Map
 
+var back_scene
 var maxZombie: int = 5
 var zombieNumber: int:
 	get: return get_tree().get_nodes_in_group("zombie").size()
 
 var lvl: int = 0
+var score: int = 0
 
 var current_xp: float = 0
 @onready var xp_needed: float = get_xp_needed_by_lvl()
