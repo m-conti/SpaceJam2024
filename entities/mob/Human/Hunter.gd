@@ -5,8 +5,8 @@ extends Human
 @export var attack_range: float = 100.0
 
 
-static func get_score():
-	return 4
+static func get_score() -> float:
+	return 4.0
 
 
 func change_target_mode():

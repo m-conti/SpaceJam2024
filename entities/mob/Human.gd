@@ -5,7 +5,7 @@ class_name Human
 signal attacked
 
 @export var zombie_scene: PackedScene
-static var score: int:
+static var score: float:
 	get = get_score
 
 @onready var vision: Area2D = %Vision
@@ -16,8 +16,8 @@ static func get_entity_group():
 	return "human"
 
 
-static func get_score():
-	return 1
+static func get_score() -> float:
+	return 1.0
 
 
 func _ready():
