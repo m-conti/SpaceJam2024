@@ -4,7 +4,7 @@ extends Power
 static var max_count: int = 4
 static var current_count: int = 0
 
-@export var speed_factor: float = 1.5
+@export var speed_factor: float = 1.2
 
 
 func _activate():

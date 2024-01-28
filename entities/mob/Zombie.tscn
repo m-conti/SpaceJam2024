@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://5dsumrvtxacm"]
+[gd_scene load_steps=16 format=3 uid="uid://5dsumrvtxacm"]
 
 [ext_resource type="Script" path="res://entities/mob/Zombie.gd" id="1_ir1pe"]
 [ext_resource type="Texture2D" uid="uid://dqu15ssnq8vt0" path="res://assets/sprites/Zombie.png" id="2_6i7fr"]
+[ext_resource type="AudioStream" uid="uid://cnsncjopgh1km" path="res://assets/sounds/zombie_breath.wav" id="3_uya31"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xe1j"]
 
@@ -124,3 +125,7 @@ offset_top = -18.9
 offset_right = 11.1
 offset_bottom = -14.9
 show_percentage = false
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_uya31")
+autoplay = true

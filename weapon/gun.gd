@@ -22,7 +22,7 @@ func _on_timeout():
 func shoot():
 	var bullet: Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(bullet)
-
+	(%Sound as AudioStreamPlayer2D).play()
 	bullet.speed = bullet_speed
 	bullet.direction_angle = global_rotation
 	bullet.global_position = global_position

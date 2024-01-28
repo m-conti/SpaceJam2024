@@ -41,6 +41,7 @@ func hearSomathing(body: CharacterBody2D):
 
 func setTarget(body: CharacterBody2D):
 	if not target:
+		%Scream.play()
 		target = body
 		animation_player.play("Aware")
 	elif body.position.distance_to(position) < target_pos.distance_to(position):

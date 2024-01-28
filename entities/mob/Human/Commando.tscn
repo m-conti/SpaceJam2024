@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl8enpocdtkwa"]
+
+[ext_resource type="PackedScene" uid="uid://r0b6k06s2nkm" path="res://entities/mob/Human/Hunter.tscn" id="1_88kdp"]
+[ext_resource type="AudioStream" uid="uid://c3blg1exoas55" path="res://assets/sounds/scream/Boom.wav" id="2_d84wk"]
+
+[node name="Hunter" instance=ExtResource("1_88kdp")]
+scale = Vector2(1, 1)
+score = 200.0
+dispawn_distance = 100000.0
+staminaRecorvery = 2.0
+
+[node name="Vision" parent="." index="2"]
+position = Vector2(-10, 0)
+scale = Vector2(2, 3)
+
+[node name="CollisionPolygon2D" parent="Vision" index="0"]
+polygon = PackedVector2Array(100, -100, 100, 100, 0, 0)
+
+[node name="Gun" parent="Vision" index="1"]
+bullet_speed = 1000.0
+shoot_delay = 0.2
+
+[node name="PointLight2D" parent="Vision" index="2"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Scream" parent="." index="6"]
+stream = ExtResource("2_d84wk")
+volume_db = 0.0
