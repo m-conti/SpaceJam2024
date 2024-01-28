@@ -88,6 +88,14 @@ func get_cell(pos: Vector2i):
 func generate_chunck_around(chunck: Vector2i):
 	thread.wait_to_finish()
 
+	for chunck_x in range(chunck.x - 2, chunck.x + 2):
+		for chunck_y in range(chunck.y - 2, chunck.y + 2):
+			for x in range(background_generator.chunck_size.x):
+				for y in range(background_generator.chunck_size.y):
+					var cell := Vector2i(x, y) + Vector2i(chunck_x, chunck_y) * background_generator.chunck_size
+		
+					set_cell(BACKGROUND_LAYER, cell, 1, Vector2i.ZERO)
+
 	thread.start(func():
 		for x in range(chunck.x - 2, chunck.x + 2):
 			for y in range(chunck.y - 2, chunck.y + 2):

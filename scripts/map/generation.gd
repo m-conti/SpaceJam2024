@@ -43,9 +43,3 @@ func generate_chunck(chunck: Vector2i) -> void:
 	for edge in tree:
 		var path: Array = Graph.a_star(map, edge.u, edge.v)
 		map.set_cells_terrain_path(map.TERRAIN_LAYER, path, 0, 0)
-
-	for x in range(chunck_size.x):
-		for y in range(chunck_size.y):
-			var cell := Vector2i(x, y) + chunck * chunck_size
-			
-			map.set_cell(map.BACKGROUND_LAYER, cell, 1, Vector2i.ZERO)
