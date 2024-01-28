@@ -171,6 +171,7 @@ offset_bottom = -14.9
 show_percentage = false
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.4
 shadow_enabled = true
 texture = ExtResource("7_cvamc")
 texture_scale = 0.4
