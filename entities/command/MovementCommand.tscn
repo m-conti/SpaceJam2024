@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fhrf0ptqn7t"]
+[gd_scene load_steps=20 format=3 uid="uid://fhrf0ptqn7t"]
 
 [ext_resource type="Script" path="res://entities/command/MovementCommand.gd" id="1_blqut"]
 [ext_resource type="Texture2D" uid="uid://bajf3bmtyihb0" path="res://assets/sprites/flag/Dragon-Slayer-0.PNG" id="1_c5q4b"]
@@ -9,6 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://ccw4dxfp1dlwr" path="res://assets/sprites/flag/Dragon-Slayer-5.PNG" id="6_2in5t"]
 [ext_resource type="Texture2D" uid="uid://c3r5xg3xstxx3" path="res://assets/sprites/flag/Dragon-Slayer-6.PNG" id="7_p34pq"]
 [ext_resource type="Texture2D" uid="uid://j5ysf85tfkbo" path="res://assets/sprites/flag/Dragon-Slayer-7.PNG" id="8_u2oh3"]
+[ext_resource type="Texture2D" uid="uid://qduwiaigvckd" path="res://assets/sprites/flag/Blue-banner-0.PNG" id="10_c6dy2"]
+[ext_resource type="Texture2D" uid="uid://b821dsqkhml5l" path="res://assets/sprites/flag/Blue-banner-1.PNG" id="11_axfh3"]
+[ext_resource type="Texture2D" uid="uid://belye54rw8qfu" path="res://assets/sprites/flag/Blue-banner-2.PNG" id="12_wj1a7"]
+[ext_resource type="Texture2D" uid="uid://b3j4tj5h34a8a" path="res://assets/sprites/flag/Blue-banner-3.PNG" id="13_x7c28"]
+[ext_resource type="Texture2D" uid="uid://dlj3rysn8f7ng" path="res://assets/sprites/flag/Blue-banner-4.PNG" id="14_3ekjq"]
+[ext_resource type="Texture2D" uid="uid://bdwf18m33tldb" path="res://assets/sprites/flag/Blue-banner-5.PNG" id="15_f4ak5"]
+[ext_resource type="Texture2D" uid="uid://dpwx6u3q48fp4" path="res://assets/sprites/flag/Blue-banner-6.PNG" id="16_37yaf"]
+[ext_resource type="Texture2D" uid="uid://b0dboagu6831p" path="res://assets/sprites/flag/Blue-banner-7.PNG" id="17_np8xl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mym4v"]
+radius = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yly4j"]
 animations = [{
@@ -38,20 +49,41 @@ animations = [{
 "texture": ExtResource("8_u2oh3")
 }],
 "loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_c6dy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_axfh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wj1a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_x7c28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3ekjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_f4ak5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_37yaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_np8xl")
+}],
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mym4v"]
-radius = 20.0
-
 [node name="MovementCommand" type="Node2D"]
 script = ExtResource("1_blqut")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_yly4j")
-autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
@@ -59,3 +91,13 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_mym4v")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_yly4j")
+autoplay = "default"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
