@@ -3,8 +3,8 @@ extends Timer
 
 
 var entity_to_spawn := {
-	preload("res://entities/mob/FearHuman.tscn"): 1.0,
-	preload("res://entities/mob/Hunter.tscn"): 1.0,
+	preload("res://entities/mob/Human/FearHuman.tscn"): 1.0,
+	preload("res://entities/mob/Human/Hunter.tscn"): 1.0,
 }
 
 @export var spawn_count := Vector2i(1, 10)

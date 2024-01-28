@@ -11,6 +11,7 @@ script = ExtResource("1_cimbo")
 
 [node name="Character" parent="." instance=ExtResource("2_wyg1e")]
 position = Vector2(335, 145)
+max_life = 1.0
 
 [node name="Human" parent="." instance=ExtResource("3_o67sh")]
 position = Vector2(536, 187)

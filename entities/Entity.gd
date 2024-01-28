@@ -14,18 +14,18 @@ var isRunning: bool = false
 var speed: float:
 	get: return runSpeed if isRunning else walkSpeed
 
-@export var max_life: int = 1:
+@export var max_life: float = 1:
 	set(value):
 		if max_life == value: return
 		
-		var diff: int = value - max_life
+		var diff: float = value - max_life
 		diff = diff if diff > 0 else 0
 
 		max_life = value
 		_on_life_changed()
 		life += diff 
 
-@onready var life: int = max_life:
+@onready var life: float = max_life:
 	set(value):
 		if life == value: return
 		

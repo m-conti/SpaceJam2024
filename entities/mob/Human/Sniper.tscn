@@ -3,3 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://r0b6k06s2nkm" path="res://entities/mob/Human/Hunter.tscn" id="1_dg8hl"]
 
 [node name="Hunter" instance=ExtResource("1_dg8hl")]
+attack_range = 600.0
+score = 8
+wander_refresh_time = 4.0
+walkSpeed = 50.0
+runSpeed = 1000.0
+
+[node name="Vision" parent="." index="2"]
+scale = Vector2(10, 2)
+
+[node name="Gun" parent="Vision" index="1"]
+bullet_speed = 600.0
+shoot_delay = 2.0
