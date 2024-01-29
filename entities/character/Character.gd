@@ -44,6 +44,7 @@ func _ready():
 
 	attackTimer.wait_time = 1 / attack_speed
 	attackTimer.one_shot = true
+	Game.lvl_changed.connect(func(): animation_player.play("lvl_up"))
 	hit.connect(func(): animation_player.play("Hit"))
 	score_changed.connect(_on_change_score)
 	generate_chuncks()

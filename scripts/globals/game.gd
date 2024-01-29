@@ -68,6 +68,7 @@ func _on_level_up():
 	lvl += 1
 	xp_needed = get_xp_needed_by_lvl()
 	lvl_changed.emit()
+	await player.get_node("%AnimationPlayer").animation_finished
 	get_tree().paused = true
 	var scene = lvlUpScene.instantiate()
 	get_tree().root.add_child(scene)
