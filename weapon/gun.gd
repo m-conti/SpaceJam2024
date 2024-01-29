@@ -7,7 +7,7 @@ extends Node2D
 
 @onready var entity: Node2D = get_parent()
 
-var bullet_scene: PackedScene = preload("res://Weapon/Bullet.tscn")
+var bullet_scene: PackedScene = preload("res://weapon/bullet.tscn")
 
 
 func _ready():

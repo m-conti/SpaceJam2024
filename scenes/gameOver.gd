@@ -11,7 +11,7 @@ func _ready():
 
 func retry():
 	Game.retry()
-	get_tree().change_scene_to_file("res://Scenes/map.tscn")
+	get_tree().change_scene_to_file("res://scenes/map.tscn")
 
 
 func leaderboard():

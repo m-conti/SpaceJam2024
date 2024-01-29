@@ -2,7 +2,7 @@ class_name Player
 extends Entity
 
 var FlagCommand: PackedScene = preload("res://entities/command/MovementCommand.tscn")
-var paf_scene: PackedScene = preload("res://entities/character/Paf.tscn")
+var paf_scene: PackedScene = preload("res://entities/character/paf.tscn")
 
 
 @export var attack_speed: float = 0.5:
@@ -71,7 +71,7 @@ func _input(event):
 
 
 func _on_death():
-	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+	get_tree().change_scene_to_file("res://scenes/gameOver.tscn")
 	Game.score = score
 
 

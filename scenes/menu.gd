@@ -30,7 +30,7 @@ func _on_name_choosed(value: String):
 		return
 	if player_name != value:
 		var res: Dictionary = await _change_player_name(value)
-		if not res.has(name):
+		if not res.has("name"):
 			if (res.message as String).ends_with("not unique"):
 				name_already_used.emit()
 			return
