@@ -81,6 +81,10 @@ func animate_movement(direction: Vector2):
 	last_direction = direction
 	sprite.play("Walk" + side)
 
+	attack_particle.z_index = -1 if side == "Up" else 1
+	attack_particle.flip_v = direction.x < 0
+	attack_particle.flip_h = side == "Up"
+
 	sprite.flip_h = direction.x > 0
 
 

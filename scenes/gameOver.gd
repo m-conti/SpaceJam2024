@@ -14,11 +14,7 @@ func retry():
 
 
 func leaderboard():
-	self.visible = false
-	Game.back_scene = self
-
-	var _leaderboard: Leaderboard = load("res://UI/leaderBoard/leaderboard.tscn").instantiate()
-	add_child(_leaderboard)
+	UILeaderboard.show(self)
 
 
 func quit():

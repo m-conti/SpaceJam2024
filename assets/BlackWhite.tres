@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cdgc6sn7kq327"]
+
+[ext_resource type="Texture2D" uid="uid://d1uqd2sskqmaq" path="res://assets/ripped_inversed.png" id="1_4ethg"]
+[ext_resource type="Texture2D" uid="uid://b3x12703w2opx" path="res://assets/ripped.png" id="1_n5cgc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0e1hi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n2c22"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yf3cn"]
+texture = ExtResource("1_n5cgc")
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+modulate_color = Color(0.752941, 0.313726, 0.313726, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mpp6"]
+texture = ExtResource("1_n5cgc")
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhxdb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ps0r"]
+texture = ExtResource("1_4ethg")
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
+[resource]
+Button/font_sizes/font_size = 25
+Button/styles/disabled = SubResource("StyleBoxEmpty_0e1hi")
+Button/styles/focus = SubResource("StyleBoxEmpty_n2c22")
+Button/styles/hover = SubResource("StyleBoxTexture_yf3cn")
+Button/styles/normal = SubResource("StyleBoxTexture_6mpp6")
+Button/styles/pressed = SubResource("StyleBoxEmpty_bhxdb")
+LineEdit/colors/caret_color = Color(0.196078, 0.196078, 0.196078, 1)
+LineEdit/colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+LineEdit/colors/font_selected_color = Color(0.196078, 0.196078, 0.196078, 1)
+LineEdit/font_sizes/font_size = 40
+LineEdit/styles/focus = SubResource("StyleBoxTexture_2ps0r")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_2ps0r")

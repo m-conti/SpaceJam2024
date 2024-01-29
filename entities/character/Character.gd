@@ -59,6 +59,7 @@ func _input(event):
 		self.toggleRun(false)
 	if event.is_action_pressed("attack"):
 		askToAttack()
+		attack_particle.play("attack")
 	if event.is_action_pressed("command"):
 		onCommand(event)
 
@@ -117,9 +118,14 @@ func get_direction():
 		sprite.play("Idle" + last_direction_anim)
 		return direction
 	
+
 	last_direction_anim = direction_anim
 	sprite.play("Walk" + direction_anim)
 	sprite.flip_h = direction.x > 0
+
+	attack_particle.z_index = -1 if direction_anim == "Up" else 1
+	attack_particle.flip_v = direction.x < 0
+	attack_particle.flip_h = direction_anim == "Up"
 
 	return direction
 

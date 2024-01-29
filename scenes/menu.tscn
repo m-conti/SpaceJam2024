@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://crc4jlw7vaejw" path="res://assets/musics/knock-knock-horror-creepy-scary-thriller-trailer-teaser-177239.mp3" id="1_1cjpm"]
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_rqwbj"]
-[ext_resource type="Theme" uid="uid://cb6ywj2t3tfv7" path="res://theme.tres" id="2_2p4eb"]
+[ext_resource type="Theme" uid="uid://cdgc6sn7kq327" path="res://assets/BlackWhite.tres" id="4_6r57p"]
 [ext_resource type="VideoStream" path="res://videos.ogv" id="4_uvsc0"]
 
 [node name="Menu" type="CanvasLayer"]
@@ -19,42 +19,36 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 201.0
+offset_top = -170.0
+offset_right = 368.0
+offset_bottom = 170.0
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
-layout_mode = 2
-theme = ExtResource("2_2p4eb")
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Start" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
+theme = ExtResource("4_6r57p")
 text = "Start"
 
-[node name="LeaderBoard" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LeaderBoard" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
+theme = ExtResource("4_6r57p")
 text = "Leaderboard
 "
 
-[node name="ChangeName" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ChangeName" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
+theme = ExtResource("4_6r57p")
 text = "Change name
 "
 
@@ -63,6 +57,6 @@ stream = ExtResource("1_1cjpm")
 volume_db = -20.0
 autoplay = true
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/LeaderBoard" to="." method="_on_leader_board_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ChangeName" to="." method="_on_change_name_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/LeaderBoard" to="." method="_on_leader_board_pressed"]
+[connection signal="pressed" from="VBoxContainer/ChangeName" to="." method="_on_change_name_pressed"]

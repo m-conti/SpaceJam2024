@@ -45,6 +45,7 @@ func _on_death():
 func attack(body):
 	if body.is_in_group("human"):
 		body.attacked.emit()
+		attack_particle.play("attack")
 
 func reachCommand(area):
 	if target == null: return

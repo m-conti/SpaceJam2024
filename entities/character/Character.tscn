@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da3uspmrjxjl"]
+[gd_scene load_steps=24 format=3 uid="uid://da3uspmrjxjl"]
 
 [ext_resource type="Script" path="res://entities/character/Character.gd" id="1_oef5v"]
 [ext_resource type="SpriteFrames" uid="uid://pv47dgw21mgw" path="res://entities/mob/Anim/Player.tres" id="2_wpwxy"]
@@ -7,9 +7,84 @@
 [ext_resource type="Script" path="res://UI/xp.gd" id="5_j1jo7"]
 [ext_resource type="Script" path="res://UI/lvl.gd" id="6_of7a4"]
 [ext_resource type="Texture2D" uid="uid://bjtq5dlsqxvkt" path="res://assets/LightSprite.png" id="7_cvamc"]
+[ext_resource type="Texture2D" uid="uid://25eeln6o250i" path="res://assets/slash.png" id="8_0q34h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igy0t"]
 radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s56xy"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(0, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lys0o"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(140, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooxru"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(280, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txw43"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(420, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60jx7"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(560, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4okv"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(700, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwtm0"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(840, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ophvo"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(980, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghcor"]
+atlas = ExtResource("8_0q34h")
+region = Rect2(1120, 0, 140, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_siwei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s56xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lys0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooxru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txw43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60jx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4okv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwtm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ophvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghcor")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"attack",
+"speed": 20.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45ndk"]
 radius = 30.0
@@ -48,9 +123,17 @@ max_life = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_igy0t")
 
+[node name="AttackParticle" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 1)
+rotation = 1.47052
+sprite_frames = SubResource("SpriteFrames_siwei")
+animation = &"attack"
+frame = 9
+frame_progress = 1.0
+
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(0.556863, 1, 0.384314, 1)
 self_modulate = Color(0.556863, 1, 0.384314, 1)
 sprite_frames = ExtResource("2_wpwxy")
 animation = &"IdleDown"
@@ -97,7 +180,7 @@ script = ExtResource("3_jbani")
 
 [node name="Zombies" type="Label" parent="GUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Zombies : 0"
+text = "Zombies : 0 / 5"
 label_settings = SubResource("LabelSettings_4wy8b")
 script = ExtResource("4_lr0uq")
 

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var life_progress_bar: ProgressBar = %LifeProgressBar
 @onready var stamina_progress_bar: ProgressBar = %StaminaProgressBar
+@onready var attack_particle: AnimatedSprite2D = %AttackParticle
 
 @export var staminaRecorvery: float = 1.0
 @export var walkSpeed: float = 6000.0
@@ -21,7 +22,7 @@ var speed: float:
 		if max_life == value: return
 		
 		var diff: float = value - max_life
-		diff = diff if diff > 0 else 0
+		diff = diff if diff > 0 else 0.0
 
 		max_life = value
 		_on_life_changed()

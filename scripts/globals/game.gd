@@ -6,7 +6,13 @@ var player: Player
 var map: Map
 
 var back_scene
-var maxZombie: int = 5
+var maxZombie: int = 5:
+	set(value):
+		if value == maxZombie: return
+
+		maxZombie = value
+		zombie_count_changed.emit(zombieNumber)
+
 var zombieNumber: int:
 	get: return get_tree().get_nodes_in_group("zombie").size()
 

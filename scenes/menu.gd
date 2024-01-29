@@ -34,16 +34,13 @@ func _on_name_choosed(value: String):
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/map.tscn")
-	pass # Replace with function body.
 
 
 func _on_leader_board_pressed():
-	get_tree().change_scene_to_file("res://UI/leaderBoard/leaderboard.tscn")
-	pass # Replace with function body.
+	UILeaderboard.show(self)
 
 
 func _on_change_name_pressed():
 	playerNameScene = PlayerNameScene.instantiate()
 	playerNameScene.get_node("%Name").text = player_name
 	add_child(playerNameScene)
-	pass # Replace with function body.
