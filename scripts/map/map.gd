@@ -21,6 +21,7 @@ func _exit_tree():
 
 
 func _ready():
+	(%Music).process_mode = Node.PROCESS_MODE_ALWAYS
 	Game.map = self
 
 
