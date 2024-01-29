@@ -6,6 +6,7 @@ var playerNameScene
 var player_name: String = ""
 
 signal name_choosed(value: String)
+signal name_already_used
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,9 +26,15 @@ func askChooseNameIfNeeded():
 	add_child(playerNameScene)
 
 func _on_name_choosed(value: String):
-	var res = await _change_player_name(value)
-	if not res.name: return
-	player_name = res.name
+	if value == "":
+		return
+	if player_name != value:
+		var res: Dictionary = await _change_player_name(value)
+		if not res.has(name):
+			if (res.message as String).ends_with("not unique"):
+				name_already_used.emit()
+			return
+		player_name = res.name
 	(playerNameScene as Node).queue_free()
 	playerNameScene = null
 	pass

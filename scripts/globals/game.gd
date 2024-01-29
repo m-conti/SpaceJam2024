@@ -64,6 +64,14 @@ func getPower(n_powers: int) -> Array:
 	
 	return powers
 
+func retry():
+	score = 0
+	current_xp = 0
+	lvl = 0
+	maxZombie = 5
+	xp_needed = get_xp_needed_by_lvl()
+	pass
+
 func _on_level_up():
 	lvl += 1
 	xp_needed = get_xp_needed_by_lvl()
