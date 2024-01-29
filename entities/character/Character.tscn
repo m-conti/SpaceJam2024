@@ -310,4 +310,9 @@ theme_override_font_sizes/font_size = 10
 text = "Level Up"
 horizontal_alignment = 1
 
+[node name="PafTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
 [connection signal="score_changed" from="." to="GUI/PanelContainer/MarginContainer/VBoxContainer/Score" method="_on_character_score_changed"]
+[connection signal="timeout" from="PafTimer" to="." method="paf_callback"]

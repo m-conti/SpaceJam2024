@@ -2,6 +2,8 @@ class_name Player
 extends Entity
 
 var FlagCommand: PackedScene = preload("res://entities/command/MovementCommand.tscn")
+var paf_scene: PackedScene = preload("res://entities/character/Paf.tscn")
+
 
 @export var attack_speed: float = 0.5:
 	set(value):
@@ -49,9 +51,11 @@ func _ready():
 	score_changed.connect(_on_change_score)
 	generate_chuncks()
 
+
 func _on_change_score(score):
 	print("CHANGE PITCH", 1 + score / 100)
 	(get_parent().get_node("Music") as AudioStreamPlayer).pitch_scale = 1 + float(score) / 5000
+
 
 func _input(event):
 	if event.is_action_pressed("run"):
@@ -95,6 +99,16 @@ func _physics_process(delta):
 
 	velocity = get_direction().normalized() * speed * delta
 	move_and_slide()
+
+
+func paf_callback():
+	if not isRunning:
+		return
+	
+	var paf = paf_scene.instantiate()
+
+	get_tree().root.add_child(paf)
+	paf.global_position = global_position + Vector2(0, 16)
 
 
 func get_direction():
