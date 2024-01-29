@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://rulg1r7sntw4"]
+[gd_scene load_steps=63 format=3 uid="uid://rulg1r7sntw4"]
 
 [ext_resource type="Script" path="res://scripts/map/map.gd" id="1_7xh8i"]
 [ext_resource type="Texture2D" uid="uid://b2amivhenmif7" path="res://assets/Zombie Apocalypse Tileset.png" id="1_pk76x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_h4lx8"]
 [ext_resource type="AudioStream" uid="uid://bpd50ood5g8nq" path="res://assets/musics/zombie-15157.mp3" id="6_qct7t"]
 [ext_resource type="PackedScene" uid="uid://da3uspmrjxjl" path="res://entities/character/Character.tscn" id="6_vbuwl"]
+[ext_resource type="PackedScene" uid="uid://c3fhp6lbij2if" path="res://scenes/Pause.tscn" id="7_8xfij"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_6uamg"]
 tile_data = PackedInt32Array(0, 917504, 3, 65536, 917504, 4, 131072, 917504, 5, 1, 983040, 3, 65537, 983040, 4, 131073, 983040, 5, 2, 1048576, 3, 65538, 1048576, 4, 131074, 1048576, 5, 3, 1114112, 3, 65539, 1114112, 4, 131075, 1114112, 5, 4, 1179648, 3, 65540, 1179648, 4, 131076, 1179648, 5, 5, 1245184, 3, 65541, 1245184, 4, 131077, 1245184, 5)
@@ -2633,5 +2634,7 @@ unique_name_in_owner = true
 stream = ExtResource("6_qct7t")
 volume_db = -20.0
 autoplay = true
+
+[node name="Pause" parent="." instance=ExtResource("7_8xfij")]
 
 [connection signal="timeout" from="Map/Spawner" to="Map/Spawner" method="_on_timeout"]

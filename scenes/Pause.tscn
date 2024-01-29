@@ -1,3 +1,102 @@
-[gd_scene format=3 uid="uid://c3fhp6lbij2if"]
+[gd_scene load_steps=7 format=3 uid="uid://c3fhp6lbij2if"]
+
+[ext_resource type="Script" path="res://scenes/Pause.gd" id="1_j50rx"]
+[ext_resource type="Texture2D" uid="uid://dma4ocfwj2wo7" path="res://assets/Tuto.png" id="2_rrdmo"]
+[ext_resource type="Texture2D" uid="uid://cqfdjpygu3otj" path="res://assets/Tuto2.png" id="3_go25l"]
+
+[sub_resource type="Animation" id="Animation_qfmn8"]
+resource_name = "pause"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_7304a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rt3gf"]
+_data = {
+"RESET": SubResource("Animation_7304a"),
+"pause": SubResource("Animation_qfmn8")
+}
 
 [node name="Pause" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_j50rx")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 480
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_rrdmo")
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_go25l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rt3gf")
+}
+autoplay = "pause"
+speed_scale = 2.0

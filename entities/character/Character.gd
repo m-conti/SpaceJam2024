@@ -63,6 +63,7 @@ func _input(event):
 		attack_particle.play("attack")
 	if event.is_action_pressed("command"):
 		onCommand(event)
+	pass
 
 
 func _on_death():
